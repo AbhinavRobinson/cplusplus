@@ -18,8 +18,12 @@
 /** Global int */ int globalVar = 0;
 /** Constant global double */ const double PI = 3.141;
 
-/**
- * Let there be comments. 
+/** 
+ * Print min max of datatypes.
+ * @param name {string} datatype
+ * @interface uses template T 
+ *
+ * @returns {null}
  */
 template <typename T>
 void print_min_max(std::string name)
