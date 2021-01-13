@@ -9,6 +9,7 @@
  * 
  * @returns 0 {integer}
  */
+
 int main()
 {
     /** @private */ std::vector<std::string> msg{"Hello", "World", "!"};
