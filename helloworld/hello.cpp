@@ -11,11 +11,11 @@
  */
 int main()
 {
-    /** @private */ std::vector msg = {"Hello", "World", "!"};
+    /** @private */ std::vector<std::string> msg{"Hello", "World", "!"};
 
-    for (auto &word : msg)
+    for (const std::string &word : msg)
     {
-        std::cout << word << (word != ("World") ? " " : "");
+        std::cout << word << " ";
     }
 
     std::cout << std::endl;
