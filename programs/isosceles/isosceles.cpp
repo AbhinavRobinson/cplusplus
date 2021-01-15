@@ -6,7 +6,7 @@
 */
 int main()
 {
-    int a, b, c, d;
+    int a, b, c;
 
     std::cout << "Is it Isosceles?" << std::endl;
     std::cout << "Enter first side length: " << std::endl;
@@ -25,8 +25,11 @@ int main()
         std::cout << "The Triangle is not Isosceles" << std::endl;
     }
 
-    // Just using to stop the program from closing :)
-    std::cin >> d;
+    //clear buffer, wait for input to close program
+    std::cout << "Enter Anything to Quit :)" << std::endl;
+    std::cin.clear();
+    std::cin.ignore(INT_MAX, '\n');
+    std::cin.get();
 
     return 0;
 }
