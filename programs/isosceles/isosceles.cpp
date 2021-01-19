@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits.h>
 
 /** Checks whether the triangle is isoceles or not.
  * @author Abhinav Robinson
