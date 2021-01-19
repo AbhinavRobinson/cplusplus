@@ -17,6 +17,7 @@ int main()
   std::cout << "Enter HRA% ? ";
   std::cin >> hra;
 
+  // find gross salary
   int salary = base + (da / 100) * base + (hra / 100) * base;
 
   std::cout << "Salary is " << salary << std::endl;

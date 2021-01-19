@@ -12,6 +12,7 @@ int main()
   printf("Enter a number for square and cube: ");
   std::cin >> num;
 
+  // Find square and cube
   int sqr = num * num;
   int cbe = sqr * num;
 
