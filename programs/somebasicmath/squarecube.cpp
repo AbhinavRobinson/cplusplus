@@ -1,7 +1,7 @@
 #include <iostream>
 #include <limits.h>
 
-/** Identity Squisher
+/** Print Square Cube
  * @author Abhinav Robinson
  * @returns {int} 0
 */
