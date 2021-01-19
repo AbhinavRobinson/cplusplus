@@ -7,17 +7,20 @@
 */
 int main()
 {
-  int num;
+  // declare small int
+  short int num;
 
   std::cout << "Enter number to find factorial ? ";
   std::cin >> num;
 
-  if (num <= 0)
+  // limit between to avoid negative underflow
+  if (num <= 0 || num >= 20)
   {
-    std::cout << "Please give a valid input!" << std::endl;
+    std::cout << "Please give a valid input! (1-19)" << std::endl;
   }
   else
   {
+    // Find factorial
     int fac = 1;
     for (int i = 1; i <= num; i++)
     {
