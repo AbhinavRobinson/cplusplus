@@ -1,6 +1,8 @@
 #include <iostream>
 #include <limits.h>
 
+#include <numeric>
+
 /** Generates Identity Matrix
  * @param {unsigned} size 
  * @returns {int**} identity array
@@ -88,6 +90,16 @@ int main()
   for (int i = 0; i < col.length(); i++)
   {
     colArr[i] = col[i];
+  }
+
+  // final count of rows and cols
+  int rowCount = std::accumulate(rowArr, rowArr + size, rowCount);
+  int colCount = std::accumulate(colArr, colArr + size, colCount);
+
+  int **result = new int *[colCount];
+
+  for (int i = 0; i < colCount; i++)
+  {
   }
 
   // important: clean up memory
