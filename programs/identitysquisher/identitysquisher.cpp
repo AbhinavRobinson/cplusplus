@@ -100,6 +100,25 @@ int main()
 
   for (int i = 0; i < colCount; i++)
   {
+    result[i] = new int[rowCount];
+
+    for (int j = 0; j < rowCount; j++)
+    {
+      if (i == j)
+      {
+        result[i][j] = 1;
+      }
+
+      if (j < rowCount - 1 && j > i)
+      {
+        result[i][j] = 1;
+      }
+
+      if (i < colCount - 1 && i > j)
+      {
+        result[i][j] = 1;
+      }
+    }
   }
 
   // important: clean up memory
