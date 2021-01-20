@@ -64,6 +64,32 @@ int main()
     printf("\n");
   }
 
+  // init row and col strings
+  std::string row = "";
+  std::string col = "";
+
+  printf("Enter Row Operation (xxx) < [0,1] ? ");
+  std::cin >> row;
+
+  printf("Enter Col Operation (xxx) < [0,1] ? ");
+  std::cin >> col;
+
+  // Init row and col matricies
+  int *rowArr = new int[sizeof(row)];
+  int *colArr = new int[sizeof(col)];
+
+  // Ingest Row inputs
+  for (int i = 0; i < row.length(); i++)
+  {
+    rowArr[i] = row[i];
+  }
+
+  // Ingest Col inputs
+  for (int i = 0; i < col.length(); i++)
+  {
+    colArr[i] = col[i];
+  }
+
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
