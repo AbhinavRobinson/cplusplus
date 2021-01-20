@@ -97,8 +97,14 @@ int main()
   {
     delete[] array[h];
   }
+  delete[] rowArr;
+  delete[] colArr;
   delete[] array;
   array = 0;
+  rowArr = 0;
+  colArr = 0;
+  col = "";
+  row = "";
 
   //clear buffer, wait for input to close program
   std::cout << "Enter Anything to Quit :)" << std::endl;
