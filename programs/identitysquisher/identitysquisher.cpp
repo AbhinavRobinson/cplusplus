@@ -46,14 +46,15 @@ int main()
 {
   unsigned size = 0;
 
+  // get size
   printf("Enter size of array: ");
   std::cin >> size;
 
+  // get identity matrix
   int **array = createIdentity(size);
 
   // print contents of the array2D
   printf("Array contents: \n");
-
   for (int h = 0; h < size; h++)
   {
     for (int w = 0; w < size; w++)
