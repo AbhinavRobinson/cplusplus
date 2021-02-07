@@ -1,6 +1,5 @@
 #include <iostream>
 #include <limits.h>
-#include <numeric>
 #include <math.h>
 
 /** Returns the area of the circle
