@@ -1,6 +1,7 @@
 #include <iostream>
 #include <limits.h>
 #include <math.h>
+#include <vector>
 
 /** Compare pairs (w,x), (y,z) on given conditions :
  * 
@@ -21,8 +22,8 @@ int main()
   int arr[][2] = {{1, 4}, {3, 2}, {5, 6}, {7, 8}, {9, 10}, {13, 12}, {11, 14}};
 
   // lets generate a list for case 1
-  int **l1 = getCase1List(arr);
-  int **l2 = getCase2List(arr);
+  std::vector<int> l1 = getCase1List(arr);
+  std::vector<int> l2 = getCase2List(arr);
 
   // important: clean up memory
   printf("\n");
@@ -41,19 +42,28 @@ int main()
  * @param arr list of pairs
  * @returns list of pairs
 */
-int **getCase1List(int arr[][2])
+std::vector<int> getCase1List(int arr[][2])
 {
-  int **array = 0;
+  std::vector<int> array;
+
   int num_pairs = sizeof(arr);
 
   bool hasPairs = false;
 
   for (int i = 0; i < num_pairs; i++)
   {
+    hasPairs = false;
     int *curr_pair = arr[i];
-    int **pairs = 0;
+
+    std::vector<int> pairs;
+
     for (int j = 0; j < num_pairs; j++)
     {
+      if (curr_pair[0] < arr[j][0] && curr_pair[1] > arr[j][1])
+      {
+        hasPairs = true;
+        // pairs.push_back()
+      }
     }
   }
 
@@ -64,9 +74,9 @@ int **getCase1List(int arr[][2])
  * @param arr list of pairs
  * @returns list of pairs
 */
-int **getCase2List(int arr[][2])
+std::vector<int> getCase2List(int arr[][2])
 {
-  int **array = 0;
+  std::vector<int> array;
 
   return array;
 }
