@@ -9,14 +9,14 @@
  */
 float calcArea(unsigned radius)
 {
-  return floor(3.1415 * pow(radius, 2));
+  return 3.1415 * pow(radius, 2);
 }
 
 /** Returns the radius of the circle
  * @param area {float}
- * @returns radius {unsigned int}
+ * @returns radius {float}
 */
-int calcRadius(float area)
+float calcRadius(float area)
 {
   return pow(area / 3.1415, 0.5);
 }
@@ -47,13 +47,28 @@ int main()
   // lets merge and circles.
   float A3 = A1 + A2;
 
-  // Find new radius
-  int r3 = calcRadius(A3);
+  // lets find the radius of the mergerd circle.
+  float r3 = calcRadius(A3);
 
   // Print the third radius.
   std::cout << "The radius of the third area is " << r3 << std::endl;
 
-  // lets find the radius of the mergerd circle.
+  // important: clean up memory
+  printf("\n");
+  printf("Cleaning up memory...\n");
+
+  r1 = 0;
+  r2 = 0;
+  r3 = 0;
+  A1 = 0;
+  A2 = 0;
+  A3 = 0;
+
+  //clear buffer, wait for input to close program
+  std::cout << "Enter Anything to Quit :)" << std::endl;
+  std::cin.clear();
+  std::cin.ignore(INT_MAX, '\n');
+  std::cin.get();
 
   return 0;
 }
