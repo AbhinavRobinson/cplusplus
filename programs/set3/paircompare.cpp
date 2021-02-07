@@ -21,7 +21,8 @@ int main()
   int arr[7][2] = {{1, 4}, {3, 2}, {5, 6}, {7, 8}, {9, 10}, {13, 12}, {11, 14}};
 
   // lets generate a list for case 1
-  int **l1;
+  int **l1 = getCase1List(arr);
+  int **l2 = getCase2List(arr);
 
   // important: clean up memory
   printf("\n");
@@ -37,17 +38,23 @@ int main()
 }
 
 /** Case 1:  W < Y , X > Z
+ * @param arr list of pairs
  * @returns list of pairs
 */
-int **getCase1List(int **arr)
+int **getCase1List(int arr[][2])
 {
-  return arr;
+  int **array = 0;
+
+  return array;
 }
 
 /** Case 2: W > Y , X < Z
+ * @param arr list of pairs
  * @returns list of pairs
 */
-int **getCase2List(int **arr)
+int **getCase2List(int arr[][2])
 {
-  return arr;
+  int **array = 0;
+
+  return array;
 }
