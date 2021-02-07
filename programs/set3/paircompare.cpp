@@ -45,9 +45,7 @@ int main()
 std::vector<int> getCase1List(int arr[][2])
 {
   std::vector<int> array;
-
   int num_pairs = sizeof(arr);
-
   bool hasPairs = false;
 
   for (int i = 0; i < num_pairs; i++)
@@ -77,6 +75,8 @@ std::vector<int> getCase1List(int arr[][2])
 std::vector<int> getCase2List(int arr[][2])
 {
   std::vector<int> array;
+  int num_pairs = sizeof(arr);
+  bool hasPairs = false;
 
   return array;
 }
