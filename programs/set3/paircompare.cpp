@@ -18,7 +18,7 @@
 int main()
 {
   // Create example array
-  int arr[7][2] = {{1, 4}, {3, 2}, {5, 6}, {7, 8}, {9, 10}, {13, 12}, {11, 14}};
+  int arr[][2] = {{1, 4}, {3, 2}, {5, 6}, {7, 8}, {9, 10}, {13, 12}, {11, 14}};
 
   // lets generate a list for case 1
   int **l1 = getCase1List(arr);
