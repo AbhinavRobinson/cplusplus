@@ -3,6 +3,8 @@
 #include <math.h>
 #include <vector>
 
+using namespace std;
+
 /** Compare pairs (w,x), (y,z) on given conditions :
  * 
  *  W < Y , X > Z  =>  (total pairs) : (list of pair of pairs) => 1 : ((1,4),(3,2))              
@@ -22,18 +24,18 @@ int main()
   int arr[][2] = {{1, 4}, {3, 2}, {5, 6}, {7, 8}, {9, 10}, {13, 12}, {11, 14}};
 
   // lets generate a list for case 1
-  std::vector<int> l1 = getCase1List(arr);
-  std::vector<int> l2 = getCase2List(arr);
+  vector<int> l1 = getCase1List(arr);
+  vector<int> l2 = getCase2List(arr);
 
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
 
   //clear buffer, wait for input to close program
-  std::cout << "Enter Anything to Quit :)" << std::endl;
-  std::cin.clear();
-  std::cin.ignore(INT_MAX, '\n');
-  std::cin.get();
+  cout << "Enter Anything to Quit :)" << endl;
+  cin.clear();
+  cin.ignore(INT_MAX, '\n');
+  cin.get();
 
   return 0;
 }
@@ -42,9 +44,9 @@ int main()
  * @param arr list of pairs
  * @returns list of pairs
 */
-std::vector<int> getCase1List(int arr[][2])
+vector<int> getCase1List(int arr[][2])
 {
-  std::vector<int> array;
+  vector<int> array;
   int num_pairs = sizeof(arr);
   bool hasPairs = false;
 
@@ -53,7 +55,7 @@ std::vector<int> getCase1List(int arr[][2])
     hasPairs = false;
     int *curr_pair = arr[i];
 
-    std::vector<int> pairs;
+    vector<int> pairs;
 
     for (int j = 0; j < num_pairs; j++)
     {
@@ -72,9 +74,9 @@ std::vector<int> getCase1List(int arr[][2])
  * @param arr list of pairs
  * @returns list of pairs
 */
-std::vector<int> getCase2List(int arr[][2])
+vector<int> getCase2List(int arr[][2])
 {
-  std::vector<int> array;
+  vector<int> array;
   int num_pairs = sizeof(arr);
   bool hasPairs = false;
 
