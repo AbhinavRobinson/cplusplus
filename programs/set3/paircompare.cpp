@@ -44,6 +44,18 @@ int main()
 int **getCase1List(int arr[][2])
 {
   int **array = 0;
+  int num_pairs = sizeof(arr);
+
+  bool hasPairs = false;
+
+  for (int i = 0; i < num_pairs; i++)
+  {
+    int *curr_pair = arr[i];
+    int **pairs = 0;
+    for (int j = 0; j < num_pairs; j++)
+    {
+    }
+  }
 
   return array;
 }
