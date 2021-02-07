@@ -16,6 +16,8 @@
 */
 int main()
 {
+  // Create example array
+  int arr[7][2] = {{1, 4}, {3, 2}, {5, 6}, {7, 8}, {9, 10}, {13, 12}, {11, 14}};
 
   // important: clean up memory
   printf("\n");
