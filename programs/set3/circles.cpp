@@ -22,7 +22,7 @@ float calcRadius(float area)
 
 /** Prints area of circles.
  * @author Abhinav Robinson
- * @return {unsigned int} 0
+ * @return {int} 0
 */
 int main()
 {
