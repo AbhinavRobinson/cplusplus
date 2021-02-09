@@ -46,11 +46,35 @@ auto getCase1List(vector<vector<int>> arr)
  * @param arr list of pairs
  * @returns list of pairs
 */
-auto getCase2List(auto arr)
+auto getCase2List(vector<vector<int>> arr)
 {
-  vector<int> array;
-  int num_pairs = sizeof(arr);
+  vector<vector<vector<int>>> array;
+  int num_pairs = arr.size();
   bool hasPairs = false;
+
+  for (int i = 0; i < num_pairs; i++)
+  {
+    // local state
+    hasPairs = false;
+    vector<int> curr_pair = arr[i];
+
+    // list of all curr pairs
+    vector<vector<int>> pairs;
+
+    for (int j = 0; j < num_pairs; j++)
+    {
+      if (curr_pair[0] > arr[j][0] && curr_pair[1] < arr[j][1])
+      {
+        hasPairs = true;
+        pairs.push_back(curr_pair);
+      }
+    }
+
+    if (hasPairs == true)
+    {
+      array.push_back(pairs);
+    }
+  }
 
   return array;
 }
@@ -75,19 +99,41 @@ int main()
 
   // lets generate a list for case 1
   vector<vector<vector<int>>> l1 = getCase1List(arr);
-  // vector<int> l2 = getCase2List(arr);
+  vector<vector<vector<int>>> l2 = getCase2List(arr);
 
   // Print contents of vector
+  cout << "Case 1 size=" << l1.size() << " : ";
   for (vector<vector<vector<int>>>::const_iterator i = l1.begin(); i != l1.end(); ++i)
   {
     for (vector<vector<int>>::const_iterator j = i->begin(); j != i->end(); ++j)
     {
+      cout << "(";
       for (vector<int>::const_iterator k = j->begin(); k != j->end(); ++k)
       {
-        cout << *k << ' ';
+        cout << *k << ',';
       }
+      cout << ")"
+           << " ";
     }
   }
+  cout << endl;
+
+  // Print contents of vector2
+  cout << "Case 2 size=" << l2.size() << " : ";
+  for (vector<vector<vector<int>>>::const_iterator i = l2.begin(); i != l2.end(); ++i)
+  {
+    for (vector<vector<int>>::const_iterator j = i->begin(); j != i->end(); ++j)
+    {
+      cout << "(";
+      for (vector<int>::const_iterator k = j->begin(); k != j->end(); ++k)
+      {
+        cout << *k << ',';
+      }
+      cout << ")"
+           << " ";
+    }
+  }
+  cout << endl;
 
   // important: clean up memory
   printf("\n");
