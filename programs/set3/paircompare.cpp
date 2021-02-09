@@ -21,7 +21,7 @@ using namespace std;
 int main()
 {
   // Create example array
-  int arr[][2] = {{1, 4}, {3, 2}, {5, 6}, {7, 8}, {9, 10}, {13, 12}, {11, 14}};
+  vector<vector<int>> arr = {{1, 4}, {3, 2}, {5, 6}, {7, 8}, {9, 10}, {13, 12}, {11, 14}};
 
   // lets generate a list for case 1
   vector<int> l1 = getCase1List(arr);
@@ -44,7 +44,7 @@ int main()
  * @param arr list of pairs
  * @returns list of pairs
 */
-vector<int> getCase1List(int arr[][2])
+auto getCase1List(auto arr)
 {
   vector<int> array;
   int num_pairs = sizeof(arr);
@@ -53,7 +53,7 @@ vector<int> getCase1List(int arr[][2])
   for (int i = 0; i < num_pairs; i++)
   {
     hasPairs = false;
-    int *curr_pair = arr[i];
+    vector<int> *curr_pair = arr[i];
 
     vector<int> pairs;
 
@@ -74,7 +74,7 @@ vector<int> getCase1List(int arr[][2])
  * @param arr list of pairs
  * @returns list of pairs
 */
-vector<int> getCase2List(int arr[][2])
+auto getCase2List(auto arr)
 {
   vector<int> array;
   int num_pairs = sizeof(arr);
