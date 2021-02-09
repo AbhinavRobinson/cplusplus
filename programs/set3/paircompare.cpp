@@ -11,14 +11,18 @@ using namespace std;
 */
 auto getCase1List(vector<vector<int>> arr)
 {
+  // make local 3d array
   vector<vector<vector<int>>> array;
+  // size of input
   int num_pairs = arr.size();
+  // if we wont have any pair, we wont push to array
   bool hasPairs = false;
 
   for (int i = 0; i < num_pairs; i++)
   {
-    // local state
+    // reset hasPair check
     hasPairs = false;
+    // create local pairs
     vector<int> curr_pair = arr[i];
 
     // list of all curr pairs
@@ -28,6 +32,7 @@ auto getCase1List(vector<vector<int>> arr)
     {
       if (curr_pair[0] < arr[j][0] && curr_pair[1] > arr[j][1])
       {
+        // since pairs are found, lets push to local pairs
         hasPairs = true;
         pairs.push_back(curr_pair);
       }
@@ -35,6 +40,7 @@ auto getCase1List(vector<vector<int>> arr)
 
     if (hasPairs == true)
     {
+      // since we did find pairs, we will push local pair list to array
       array.push_back(pairs);
     }
 
@@ -52,14 +58,18 @@ auto getCase1List(vector<vector<int>> arr)
 */
 auto getCase2List(vector<vector<int>> arr)
 {
+  // make local 3d array
   vector<vector<vector<int>>> array;
+  // size of input
   int num_pairs = arr.size();
+  // if we wont have any pair, we wont push to array
   bool hasPairs = false;
 
   for (int i = 0; i < num_pairs; i++)
   {
-    // local state
+    // reset hasPair check
     hasPairs = false;
+    // create local pairs
     vector<int> curr_pair = arr[i];
 
     // list of all curr pairs
@@ -69,6 +79,7 @@ auto getCase2List(vector<vector<int>> arr)
     {
       if (curr_pair[0] > arr[j][0] && curr_pair[1] < arr[j][1])
       {
+        // since pairs are found, lets push to local pairs
         hasPairs = true;
         pairs.push_back(curr_pair);
       }
@@ -76,6 +87,7 @@ auto getCase2List(vector<vector<int>> arr)
 
     if (hasPairs == true)
     {
+      // since we did find pairs, we will push local pair list to array
       array.push_back(pairs);
     }
 
