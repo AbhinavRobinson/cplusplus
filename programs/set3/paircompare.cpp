@@ -12,7 +12,7 @@ using namespace std;
 auto getCase1List(vector<vector<int>> arr)
 {
   vector<vector<vector<int>>> array;
-  int num_pairs = sizeof(arr);
+  int num_pairs = arr.size();
   bool hasPairs = false;
 
   for (int i = 0; i < num_pairs; i++)
