@@ -12,11 +12,15 @@ using namespace std;
 */
 auto genPowerset(int n)
 {
+  // init stack and powerVec
   vector<int> stack;
-  int k;
-  stack.push_back(0); /* 0 is not considered as part of the set */
-  k = 0;
   vector<vector<int>> powerVec;
+
+  // pushback first 0, this will not be included in final set
+  stack.push_back(0);
+  int k = 0;
+
+  // generate powerset (with duplicates // fast)
   while (1)
   {
     if (stack[k] < n)
@@ -34,14 +38,17 @@ auto genPowerset(int n)
     powerVec.push_back(stack);
   }
 
+  // init powerset
   vector<set<int>> powerset;
 
+  // remove duplicates and zeros
   for (vector<vector<int>>::const_iterator i = powerVec.begin(); i != powerVec.end(); ++i)
   {
     set<int> s;
 
     for (vector<int>::const_iterator j = i->begin(); j != i->end(); ++j)
     {
+      // avoid adding zeros
       if (*j == 0)
       {
         continue;
@@ -52,14 +59,19 @@ auto genPowerset(int n)
     powerset.push_back(s);
   }
 
+  // cleanup memory
   stack.clear();
   powerVec.clear();
   k = 0;
   n = 0;
 
+  // return unique valued powerset
   return powerset;
 }
 
+/** Print 2D vector of Powerset
+ *  @returns void
+*/
 void print2DVectorWithCurlies(vector<set<int>> vec)
 {
   for (vector<set<int>>::const_iterator i = vec.begin(); i != vec.end(); ++i)
@@ -74,6 +86,7 @@ void print2DVectorWithCurlies(vector<set<int>> vec)
   }
   cout << endl;
 
+  // cleanup memory
   vec.clear();
 }
 
