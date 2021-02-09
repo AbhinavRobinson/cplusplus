@@ -127,12 +127,12 @@ void print3DVectorWithCurlies(vector<vector<vector<int>>> vec)
   {
     for (vector<vector<int>>::const_iterator j = i->begin(); j != i->end(); ++j)
     {
-      cout << "(";
+      cout << "{";
       for (vector<int>::const_iterator k = j->begin(); k != j->end(); ++k)
       {
         cout << *k << ',';
       }
-      cout << ")"
+      cout << "}"
            << " ";
     }
   }
