@@ -37,6 +37,10 @@ auto getCase1List(vector<vector<int>> arr)
     {
       array.push_back(pairs);
     }
+
+    // clear memory
+    curr_pair.clear();
+    pairs.clear();
   }
 
   return array;
@@ -74,6 +78,10 @@ auto getCase2List(vector<vector<int>> arr)
     {
       array.push_back(pairs);
     }
+
+    // clear memory
+    curr_pair.clear();
+    pairs.clear();
   }
 
   return array;
@@ -139,6 +147,10 @@ int main()
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
+
+  arr.clear();
+  l1.clear();
+  l2.clear();
 
   //clear buffer, wait for input to close program
   cout << "Enter Anything to Quit :)" << endl;
