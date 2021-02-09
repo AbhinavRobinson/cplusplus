@@ -140,10 +140,6 @@ int main()
   printf("\n");
   printf("Cleaning up memory...\n");
 
-  arr = 0;
-  l1 = 0;
-  l2 = 0;
-
   //clear buffer, wait for input to close program
   cout << "Enter Anything to Quit :)" << endl;
   cin.clear();
