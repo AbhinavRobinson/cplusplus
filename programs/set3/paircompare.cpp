@@ -33,7 +33,7 @@ auto getCase1List(vector<vector<int>> arr)
       }
     }
 
-    if (hasPairs)
+    if (hasPairs == true)
     {
       array.push_back(pairs);
     }
