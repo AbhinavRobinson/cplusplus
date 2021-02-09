@@ -117,7 +117,28 @@ auto getCase2List(vector<vector<int>> arr)
   return array;
 }
 
-/** 
+/** Prints a 3D vector containing N-length pairs
+ * @author Abhinav Robinson
+ * @returns void
+*/
+void print3DVectorWithCurlies(vector<vector<vector<int>>> vec)
+{
+  for (vector<vector<vector<int>>>::const_iterator i = vec.begin(); i != vec.end(); ++i)
+  {
+    for (vector<vector<int>>::const_iterator j = i->begin(); j != i->end(); ++j)
+    {
+      cout << "(";
+      for (vector<int>::const_iterator k = j->begin(); k != j->end(); ++k)
+      {
+        cout << *k << ',';
+      }
+      cout << ")"
+           << " ";
+    }
+  }
+}
+
+/** Main Function
  * @author Abhinav Robinson
  * @return {unsigned int} 0
 */
@@ -138,19 +159,7 @@ int main()
   if (!l1HasNoPairs)
   {
     cout << "Case 1 size=" << l1.size() << " : ";
-    for (vector<vector<vector<int>>>::const_iterator i = l1.begin(); i != l1.end(); ++i)
-    {
-      for (vector<vector<int>>::const_iterator j = i->begin(); j != i->end(); ++j)
-      {
-        cout << "(";
-        for (vector<int>::const_iterator k = j->begin(); k != j->end(); ++k)
-        {
-          cout << *k << ',';
-        }
-        cout << ")"
-             << " ";
-      }
-    }
+    print3DVectorWithCurlies(l1);
     cout << endl;
   }
   else
@@ -162,19 +171,7 @@ int main()
   if (!l2HasNoPairs)
   {
     cout << "Case 2 size=" << l2.size() << " : ";
-    for (vector<vector<vector<int>>>::const_iterator i = l2.begin(); i != l2.end(); ++i)
-    {
-      for (vector<vector<int>>::const_iterator j = i->begin(); j != i->end(); ++j)
-      {
-        cout << "(";
-        for (vector<int>::const_iterator k = j->begin(); k != j->end(); ++k)
-        {
-          cout << *k << ',';
-        }
-        cout << ")"
-             << " ";
-      }
-    }
+    print3DVectorWithCurlies(l2);
     cout << endl;
   }
   else
