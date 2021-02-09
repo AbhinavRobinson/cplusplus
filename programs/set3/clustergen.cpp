@@ -6,6 +6,10 @@
 
 using namespace std;
 
+/** Generate Powerset using stack method
+ * @param n { int } total size
+ * @returns powerset { vector<set<int>> } 
+*/
 auto genPowerset(int n)
 {
   vector<int> stack;
@@ -48,6 +52,11 @@ auto genPowerset(int n)
     powerset.push_back(s);
   }
 
+  stack.clear();
+  powerVec.clear();
+  k = 0;
+  n = 0;
+
   return powerset;
 }
 
@@ -58,12 +67,14 @@ void print2DVectorWithCurlies(vector<set<int>> vec)
     cout << "{";
     for (set<int>::const_iterator j = i->begin(); j != i->end(); ++j)
     {
-      cout << *j << ',';
+      cout << "r" << *j << ',';
     }
     cout << "}"
          << " ";
   }
   cout << endl;
+
+  vec.clear();
 }
 
 /**
@@ -74,10 +85,25 @@ int main()
 {
   int n;
 
+  // get total records
   cout << "Enter the number of records :";
   cin >> n;
 
+  // call function to pipe powerset into printer
   print2DVectorWithCurlies(genPowerset(n));
+
+  // important: clean up memory
+  printf("\n");
+  printf("Cleaning up memory...\n");
+
+  // we already cleaned rest of the memory
+  n = 0;
+
+  //clear buffer, wait for input to close program
+  cout << "Enter Anything to Quit :)" << endl;
+  cin.clear();
+  cin.ignore(INT_MAX, '\n');
+  cin.get();
 
   return 0;
 }
