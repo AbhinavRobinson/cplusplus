@@ -99,9 +99,10 @@ int main()
 
   // lets generate a list for case 1
   vector<vector<vector<int>>> l1 = getCase1List(arr);
+  // lets generate a list for case 2
   vector<vector<vector<int>>> l2 = getCase2List(arr);
 
-  // Print contents of vector
+  // Print contents of case 1
   cout << "Case 1 size=" << l1.size() << " : ";
   for (vector<vector<vector<int>>>::const_iterator i = l1.begin(); i != l1.end(); ++i)
   {
@@ -118,7 +119,7 @@ int main()
   }
   cout << endl;
 
-  // Print contents of vector2
+  // Print contents of case 2
   cout << "Case 2 size=" << l2.size() << " : ";
   for (vector<vector<vector<int>>>::const_iterator i = l2.begin(); i != l2.end(); ++i)
   {
@@ -138,6 +139,10 @@ int main()
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
+
+  arr = 0;
+  l1 = 0;
+  l2 = 0;
 
   //clear buffer, wait for input to close program
   cout << "Enter Anything to Quit :)" << endl;
