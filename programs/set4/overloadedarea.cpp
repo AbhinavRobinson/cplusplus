@@ -54,6 +54,25 @@ void getArea(vector<int> dimensions)
 {
   int size = dimensions.size();
 
+  if (size == 3)
+  {
+    int base, height;
+    base = dimensions[0];
+    height = dimensions[1];
+  }
+  else if (size == 4)
+  {
+    int a, b, c, d;
+    a = dimensions[0];
+    b = dimensions[1];
+    c = dimensions[2];
+    d = dimensions[3];
+  }
+  else
+  {
+    int radius = dimensions[0];
+  }
+
   return;
 }
 
