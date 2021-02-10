@@ -4,8 +4,16 @@
 #include <vector>
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
+  unsigned short int sides;
+
+  // Lets get shape and dimensions
+  cout << "Enter number of sides : ";
+  cin >> sides;
+
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
