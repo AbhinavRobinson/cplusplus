@@ -29,6 +29,25 @@ int main()
   }
   cout << '}' << endl;
 
+  // Lets find XOR of pairs
+  vector<int> XOR;
+  for (vector<int>::const_iterator i = C.begin(); i != C.end(); ++i)
+  {
+    for (vector<int>::const_iterator j = C.begin(); j != C.end(); ++j)
+    {
+      // append a (xor) b
+      XOR.push_back(*i ^ *j);
+    }
+  }
+
+  int max = -1;
+  for (vector<int>::const_iterator x = XOR.begin(); x != XOR.end(); ++x)
+  {
+    max = (*x > max) ? *x : max;
+  }
+
+  cout << "Max of Pair XOR : " << max << endl;
+
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
