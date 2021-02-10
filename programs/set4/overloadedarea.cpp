@@ -6,9 +6,31 @@
 
 using namespace std;
 
+class CalculateArea
+{
+public:
+  void calcArea(int base, int height)
+  {
+    cout << "Area : ";
+    cout << 0.5 * base * height << endl;
+  }
+  void calcArea(int a, int b, bool isRect)
+  {
+    cout << "Area : ";
+    cout << a * b << endl;
+  }
+  void calcArea(int radius)
+  {
+    cout << "Area : ";
+    cout << 3.1415 * (radius * radius) << endl;
+  }
+};
+
 vector<int> getDimesions(int sides)
 {
   vector<int> dimensions;
+
+  CalculateArea areaGetter;
 
   if (sides == 3)
   {
@@ -20,23 +42,23 @@ vector<int> getDimesions(int sides)
     cout << "Enter Height : ";
     cin >> h;
     dimensions.push_back(h);
+
+    areaGetter.calcArea(b, h);
   }
   else if (sides == 4)
   {
     int a, b, c, d;
     cout << "Enter Dimensions of Rectangle" << endl;
-    cout << "Enter Side 1 : ";
+    cout << "Enter Sides A : ";
     cin >> a;
     dimensions.push_back(a);
-    cout << "Enter Side 2 : ";
+    cout << "Enter Sides B : ";
     cin >> b;
     dimensions.push_back(b);
-    cout << "Enter Side 3 : ";
-    cin >> c;
-    dimensions.push_back(c);
-    cout << "Enter Side 4 : ";
-    cin >> d;
-    dimensions.push_back(d);
+    dimensions.push_back(0);
+    dimensions.push_back(0);
+
+    areaGetter.calcArea(a, b, true);
   }
   else
   {
@@ -45,6 +67,8 @@ vector<int> getDimesions(int sides)
     cout << "Enter Radius : ";
     cin >> r;
     dimensions.push_back(r);
+
+    areaGetter.calcArea(r);
   }
 
   return dimensions;
@@ -62,11 +86,9 @@ void getArea(vector<int> dimensions)
   }
   else if (size == 4)
   {
-    int a, b, c, d;
+    int a, b;
     a = dimensions[0];
     b = dimensions[1];
-    c = dimensions[2];
-    d = dimensions[3];
   }
   else
   {
