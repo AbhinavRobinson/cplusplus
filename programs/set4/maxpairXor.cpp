@@ -55,6 +55,8 @@ int main()
   A.clear();
   B.clear();
   C.clear();
+  XOR.clear();
+  max = 0;
 
   //clear buffer, wait for input to close program
   std::cout << "Enter Anything to Quit :)" << std::endl;
