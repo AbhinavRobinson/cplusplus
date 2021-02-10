@@ -22,10 +22,12 @@ int main()
     }
   }
 
+  cout << "C = {";
   for (vector<int>::const_iterator psum = C.begin(); psum != C.end(); ++psum)
   {
-    cout << *psum << endl;
+    cout << *psum << ',';
   }
+  cout << '}' << endl;
 
   // important: clean up memory
   printf("\n");
