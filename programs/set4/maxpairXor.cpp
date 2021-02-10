@@ -33,6 +33,10 @@ int main()
   printf("\n");
   printf("Cleaning up memory...\n");
 
+  A.clear();
+  B.clear();
+  C.clear();
+
   //clear buffer, wait for input to close program
   std::cout << "Enter Anything to Quit :)" << std::endl;
   std::cin.clear();
