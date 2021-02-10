@@ -26,7 +26,7 @@ public:
   }
 };
 
-vector<int> getDimesions(int sides)
+void getArea(int sides)
 {
   vector<int> dimensions;
 
@@ -71,30 +71,6 @@ vector<int> getDimesions(int sides)
     areaGetter.calcArea(r);
   }
 
-  return dimensions;
-}
-
-void getArea(vector<int> dimensions)
-{
-  int size = dimensions.size();
-
-  if (size == 3)
-  {
-    int base, height;
-    base = dimensions[0];
-    height = dimensions[1];
-  }
-  else if (size == 4)
-  {
-    int a, b;
-    a = dimensions[0];
-    b = dimensions[1];
-  }
-  else
-  {
-    int radius = dimensions[0];
-  }
-
   return;
 }
 
@@ -106,11 +82,13 @@ int main()
   cout << "Enter number of sides : ";
   cin >> sides;
 
-  vector<int> dimensions = getDimesions(sides);
+  getArea(sides);
 
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
+
+  sides = 0;
 
   //clear buffer, wait for input to close program
   std::cout << "Enter Anything to Quit :)" << std::endl;
