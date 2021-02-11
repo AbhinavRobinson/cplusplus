@@ -53,12 +53,20 @@ public:
   }
 };
 
+/** get the dimensions from user and print area
+ * @typedef {int sides} getArea
+ * @implements CalculateArea
+ * @returns void
+*/
 void getArea(int sides)
 {
+  // init dim array
   vector<int> dimensions;
 
+  // init class object
   CalculateArea areaGetter;
 
+  // get dim from user
   if (sides == 3)
   {
     int b, h;
@@ -70,6 +78,7 @@ void getArea(int sides)
     cin >> h;
     dimensions.push_back(h);
 
+    // get area
     areaGetter.calcArea(b, h);
   }
   else if (sides == 4)
@@ -85,6 +94,7 @@ void getArea(int sides)
     dimensions.push_back(0);
     dimensions.push_back(0);
 
+    // get area
     areaGetter.calcArea(a, b, true);
   }
   else
@@ -95,9 +105,11 @@ void getArea(int sides)
     cin >> r;
     dimensions.push_back(r);
 
+    // get area
     areaGetter.calcArea(r);
   }
 
+  // end of function
   return;
 }
 
