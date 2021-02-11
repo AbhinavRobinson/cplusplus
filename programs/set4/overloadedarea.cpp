@@ -1,28 +1,55 @@
+// Used for exit funciton
 #include <limits.h>
 #include <math.h>
 
 #include <vector>
 #include <iostream>
+// *** End of Imports ***
 
 using namespace std;
 
+/** 
+ * @public 
+ * @class Calculate area
+ * @classdesc This Class exports calcArea function (overloaded for different shapes)
+*/
 class CalculateArea
 {
 public:
+  /** Prints Area
+   * {Circle} calcArea
+   * @memberof CalculateArea
+   * @typedef {function} => {int radius}
+   * @returns void
+  */
+  void calcArea(int radius)
+  {
+    cout << "Area : ";
+    cout << 3.1415 * (radius * radius) << endl;
+  }
+  /** Prints Area
+   * {Triangle} calcArea
+   * @override
+   * @memberof CalculateArea
+   * @typedef {function} => {int base, int height}
+   * @returns void
+  */
   void calcArea(int base, int height)
   {
     cout << "Area : ";
     cout << 0.5 * base * height << endl;
   }
+  /** Prints Area
+   * {Rectangle} calcArea
+   * @override
+   * @memberof CalculateArea
+   * @typedef {function} => {int a, int b, bool isReact}
+   * @returns void
+  */
   void calcArea(int a, int b, bool isRect)
   {
     cout << "Area : ";
     cout << a * b << endl;
-  }
-  void calcArea(int radius)
-  {
-    cout << "Area : ";
-    cout << 3.1415 * (radius * radius) << endl;
   }
 };
 
