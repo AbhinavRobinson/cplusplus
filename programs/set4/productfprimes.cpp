@@ -12,8 +12,9 @@
 
 using namespace std;
 
-/**
- * Generate Primes
+/** Generate Primes
+ * @param lmt {int} - upper limit for prime list ( > 4 )
+ * @returns primeList { vector<int> } - list of primes
 */
 vector<int> SieveOfAtkin(int lmt)
 {
@@ -73,6 +74,7 @@ int main()
   // preprocess (generate primes)
   vector<int> primes = SieveOfAtkin(num);
 
+  // init factor list
   vector<int> factors;
 
   // prime search loop
@@ -93,10 +95,12 @@ int main()
       }
     }
 
+    // if num == 1 {can't be divided any more}
     if (num <= 1)
       break;
   }
 
+  // print factors
   cout << "Factor are : ";
   for (auto i : factors)
     cout << i << ',';
@@ -104,6 +108,10 @@ int main()
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
+
+  num = 0;
+  primes.clear();
+  factors.clear();
 
   //clear buffer, wait for input to close program
   cout << "Enter Anything to Quit :)" << endl;
