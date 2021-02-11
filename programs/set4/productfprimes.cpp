@@ -17,10 +17,9 @@ using namespace std;
 */
 vector<int> SieveOfAtkin(int lmt)
 {
-  if (lmt > 2)
-    cout << 2 << " ";
-  if (lmt > 3)
-    cout << 3 << " ";
+  vector<int> primes;
+  primes.push_back(2);
+  primes.push_back(3);
 
   bool sieve[lmt];
 
@@ -53,8 +52,6 @@ vector<int> SieveOfAtkin(int lmt)
     }
   }
 
-  vector<int> primes;
-
   for (int x = 5; x < lmt; x++)
     if (sieve[x])
       primes.push_back(x);
@@ -76,7 +73,35 @@ int main()
   // preprocess (generate primes)
   vector<int> primes = SieveOfAtkin(num);
 
-    // important: clean up memory
+  vector<int> factors;
+
+  // prime search loop
+  while (true)
+  {
+    // divide by smallest prime
+    for (auto i : primes)
+    {
+      // if divides
+      if (num % i == 0)
+      {
+        // add to factors
+        factors.push_back(i);
+        // complete division
+        num = num / i;
+        // break out of loop
+        break;
+      }
+    }
+
+    if (num <= 1)
+      break;
+  }
+
+  cout << "Factor are : ";
+  for (auto i : factors)
+    cout << i << ',';
+
+  // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
 
