@@ -1,5 +1,5 @@
 /** @summary
- * Represent any number as the sum of primes (no unique) 
+ * Represent any number as the product of primes (no unique) 
 */
 
 #include <iostream>
@@ -17,6 +17,12 @@ using namespace std;
 */
 int main()
 {
+  int num;
+
+  cout << "Enter a number : ";
+  cin >> num;
+
+  
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
