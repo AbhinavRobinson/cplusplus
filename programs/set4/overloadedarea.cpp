@@ -1,3 +1,7 @@
+/** @summary
+ * Find area of shapes by overloading a function, given the number of sides and dimensions. 
+*/
+
 // Used for exit funciton
 #include <limits.h>
 #include <math.h>

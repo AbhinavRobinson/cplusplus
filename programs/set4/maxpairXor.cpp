@@ -1,3 +1,7 @@
+/** @summary
+ * Find the dot product of 2 arrays, and then find the pairwise Xor of the Product.
+*/
+
 #include <iostream>
 #include <vector>
 
