@@ -113,14 +113,20 @@ void getArea(int sides)
   return;
 }
 
+/** Main function
+ * @author Abhinav Robinson
+ * @returns void
+*/
 int main()
 {
+  // find no of sides
   unsigned short int sides;
 
   // Lets get shape and dimensions
   cout << "Enter number of sides : ";
   cin >> sides;
 
+  // get Dimesions and area
   getArea(sides);
 
   // important: clean up memory
@@ -135,5 +141,6 @@ int main()
   std::cin.ignore(INT_MAX, '\n');
   std::cin.get();
 
+  // End of Main
   return 0;
 }
