@@ -32,9 +32,23 @@ int main()
          {5, 10, 12, 14, 55, 16},
          {6, 11, 13, 15, 16, 66}};
 
+  cout << "Original matrix" << endl;
+  cout << "{\n";
+  for (auto i : M2D)
+  {
+    cout << "[";
+    for (auto j : i)
+      cout << j << ",";
+    cout << "]\n";
+  }
+  cout << "}";
+
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
+
+  M2D.clear();
+  choice = 0;
 
   //clear buffer, wait for input to close program
   std::cout << "Enter Anything to Quit :)" << std::endl;
