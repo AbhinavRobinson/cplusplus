@@ -25,7 +25,7 @@ int main()
 
   vector<vector<int>> M2D;
 
-  M2D = {{11, 2, 3, 4, 5},
+  M2D = {{11, 2, 3, 4, 5, 6},
          {2, 22, 7, 8, 10, 11},
          {3, 7, 33, 9, 12, 13},
          {4, 8, 9, 44, 14, 15},
@@ -36,12 +36,48 @@ int main()
   cout << "{\n";
   for (auto i : M2D)
   {
-    cout << "[";
+    cout << "{";
     for (auto j : i)
       cout << j << ",";
-    cout << "]\n";
+    cout << "}\n";
   }
   cout << "}";
+
+  // 1
+  // 12
+  // 123
+  // 1234
+  // 12345
+  // 123456
+
+  vector<int> compresssed;
+  if (choice == 1)
+  {
+    for (int i = 0; i < M2D.size(); i++)
+    {
+      for (int j = 0; j <= i; j++)
+      {
+        compresssed.push_back(M2D[i][j]);
+      }
+    }
+  }
+  else
+  {
+    for (int i = 0; i < M2D.size(); i++)
+    {
+      for (int j = i; j < M2D.size(); j++)
+      {
+        compresssed.push_back(M2D[i][j]);
+      }
+    }
+  }
+
+  cout << "\n\n";
+  cout << "Compressed Matrix : ";
+  cout << "{";
+  for (auto i : compresssed)
+    cout << i << ",";
+  cout << "}" << endl;
 
   // important: clean up memory
   printf("\n");
