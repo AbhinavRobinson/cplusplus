@@ -10,13 +10,19 @@
 
 // *** End Of Imports ***
 
+using namespace std;
+
 /**
  * @function Main 
- * @returns 0 { int }
+* @returns 0 { int }
  * @author Abhinav Robinson
 */
 int main()
 {
+  int choice;
+  cout << "Enter Choice (0,1)=>{upper, lower} : ";
+  cin >> choice;
+
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
