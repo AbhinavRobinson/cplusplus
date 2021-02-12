@@ -19,10 +19,12 @@ using namespace std;
 */
 int main()
 {
+  // get choice
   int choice;
   cout << "Enter Choice (0,1)=>{upper, lower} : ";
   cin >> choice;
 
+  // init orig matrix
   vector<vector<int>> M2D;
 
   M2D = {{11, 2, 3, 4, 5, 6},
@@ -32,6 +34,7 @@ int main()
          {5, 10, 12, 14, 55, 16},
          {6, 11, 13, 15, 16, 66}};
 
+  // print orig matrix
   cout << "Original matrix" << endl;
   cout << "{\n";
   for (auto i : M2D)
@@ -43,16 +46,11 @@ int main()
   }
   cout << "}";
 
-  // 1
-  // 12
-  // 123
-  // 1234
-  // 12345
-  // 123456
-
+  // init squished matrix
   vector<int> compresssed;
   if (choice == 1)
   {
+    // lower
     for (int i = 0; i < M2D.size(); i++)
     {
       for (int j = 0; j <= i; j++)
@@ -63,6 +61,7 @@ int main()
   }
   else
   {
+    // upper
     for (int i = 0; i < M2D.size(); i++)
     {
       for (int j = i; j < M2D.size(); j++)
@@ -72,6 +71,7 @@ int main()
     }
   }
 
+  // print result
   cout << "\n\n";
   cout << "Compressed Matrix : ";
   cout << "{";
@@ -83,6 +83,7 @@ int main()
   printf("\n");
   printf("Cleaning up memory...\n");
 
+  compresssed.clear();
   M2D.clear();
   choice = 0;
 
