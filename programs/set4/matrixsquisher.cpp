@@ -23,11 +23,18 @@ int main()
   cout << "Enter Choice (0,1)=>{upper, lower} : ";
   cin >> choice;
 
+  vector<vector<int>> M2D;
+
+  M2D = {{11, 2, 3, 4, 5},
+         {2, 22, 7, 8, 10, 11},
+         {3, 7, 33, 9, 12, 13},
+         {4, 8, 9, 44, 14, 15},
+         {5, 10, 12, 14, 55, 16},
+         {6, 11, 13, 15, 16, 66}};
+
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
-
-  sides = 0;
 
   //clear buffer, wait for input to close program
   std::cout << "Enter Anything to Quit :)" << std::endl;
