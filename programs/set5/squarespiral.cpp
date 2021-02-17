@@ -6,6 +6,26 @@
 
 using namespace std;
 
+void go_left(int i, int j)
+{
+  return;
+}
+
+void go_right(int i, int j)
+{
+  return;
+}
+
+void go_up(int i, int j)
+{
+  return;
+}
+
+void go_down(int i, int j)
+{
+  return;
+}
+
 /**
  * @brief Print 2d matrix in spiral form
  * @author Abhinav Robinson 
@@ -38,7 +58,20 @@ int main()
 
   while (true)
   {
-    break;
+    // positions
+    int i = 0, j = 0;
+    // direction (left,right,top,bottom)
+    bool left, right, up, down;
+
+    // update i,j
+    if (left)
+      go_left(i, j);
+    if (right)
+      go_right(i, j);
+    if (up)
+      go_up(i, j);
+    if (down)
+      go_down(i, j);
   }
 
   // important: clean up memory
