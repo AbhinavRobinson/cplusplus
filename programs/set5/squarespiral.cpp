@@ -6,6 +6,11 @@
 
 using namespace std;
 
+/**
+ * @brief Print 2d matrix in spiral form
+ * @author Abhinav Robinson 
+ * @return int 
+ */
 int main()
 {
   cout << "Sample Matrix : " << endl;
@@ -31,10 +36,10 @@ int main()
   // lets convert to a spiral array
   vector<int> spiral;
 
-  // for (int i = 0; i < matrix.size(); i++)
-  // {
-
-  // }
+  while (true)
+  {
+    break;
+  }
 
   // important: clean up memory
   printf("\n");
