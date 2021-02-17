@@ -4,8 +4,6 @@
 #include <math.h>
 #include <limits.h>
 
-using namespace std;
-
 void go_left(int i, int j)
 {
   return;
@@ -33,35 +31,66 @@ void go_down(int i, int j)
  */
 int main()
 {
-  cout << "Sample Matrix : " << endl;
+  std::cout << "Sample Matrix : " << std::endl;
 
   // sample matrix
-  vector<vector<int>> matrix = {{1, 2, 3, 4},
-                                {5, 6, 7, 8},
-                                {9, 10, 11, 12},
-                                {13, 14, 15, 16}};
+  std::vector<std::vector<int>> matrix = {{1, 2, 3, 4},
+                                          {5, 6, 7, 8},
+                                          {9, 10, 11, 12},
+                                          {13, 14, 15, 16}};
 
   // print matrix
   for (auto i : matrix)
   {
-    cout << "[";
+    std::cout << "[";
     for (auto j : i)
     {
-      cout << j << ",";
+      std::cout << j << ",";
     }
-    cout << "]\n";
+    std::cout << "]\n";
   }
-  cout << endl;
+  std::cout << std::endl;
 
   // lets convert to a spiral array
-  vector<int> spiral;
+  std::vector<int> spiral;
+  // positions
+  int i = 0, j = 0;
+  // direction (left,right,top,bottom)
+  bool left = false, right = true, up = false, down = false;
+  // boundaries
+  int i_limit = matrix[0].size(), j_limit = matrix.size();
 
-  while (true)
+  int elem = matrix[0].size() * matrix.size();
+
+  while (elem > 0)
   {
-    // positions
-    int i = 0, j = 0;
-    // direction (left,right,top,bottom)
-    bool left, right, up, down;
+    // hit right edge
+    if (i == (matrix[0].size() - 1) && right)
+    {
+      right = false;
+      down = true;
+    }
+
+    // hit bottom edge
+    if (j == (matrix.size() - 1) && down)
+    {
+      down = false;
+      left = true;
+    }
+
+    // hit right edge
+    if (i == 0 && left)
+    {
+      left = false;
+      up = true;
+    }
+
+    // hit top edge
+    if (j == 0 && up)
+    {
+      down = false;
+      left = true;
+    }
 
     // update i,j
     if (left)
@@ -72,6 +101,8 @@ int main()
       go_up(i, j);
     if (down)
       go_down(i, j);
+
+    elem--;
   }
 
   // important: clean up memory
@@ -82,10 +113,10 @@ int main()
   spiral.clear();
 
   //clear buffer, wait for input to close program
-  cout << "Enter Anything to Quit :)" << std::endl;
-  cin.clear();
-  cin.ignore(INT_MAX, '\n');
-  cin.get();
+  std::cout << "Enter Anything to Quit :)" << std::endl;
+  std::cin.clear();
+  std::cin.ignore(INT_MAX, '\n');
+  std::cin.get();
 
   // End of Main
   return 0;
