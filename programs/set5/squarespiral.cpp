@@ -4,26 +4,6 @@
 #include <math.h>
 #include <limits.h>
 
-void go_left(int i, int j)
-{
-  return;
-}
-
-void go_right(int i, int j)
-{
-  return;
-}
-
-void go_up(int i, int j)
-{
-  return;
-}
-
-void go_down(int i, int j)
-{
-  return;
-}
-
 /**
  * @brief Print 2d matrix in spiral form
  * @author Abhinav Robinson 
@@ -64,6 +44,8 @@ int main()
 
   while (elem > 0)
   {
+    spiral.push_back(matrix[j][i]);
+
     // hit right edge
     if (i == (i_high - 1) && right)
     {
@@ -94,24 +76,31 @@ int main()
     // hit top edge
     if (j == j_low && up)
     {
-      down = false;
-      left = true;
+      up = false;
+      right = true;
       // left column is traversed
       i_low++;
     }
 
     // update i,j
     if (left)
-      go_left(i, j);
+      i--;
     if (right)
-      go_right(i, j);
+      i++;
     if (up)
-      go_up(i, j);
+      j--;
     if (down)
-      go_down(i, j);
+      j++;
 
     elem--;
   }
+
+  std::cout << "Spiral = [";
+  for (auto i : spiral)
+  {
+    std::cout << i << ",";
+  }
+  std::cout << "]\n";
 
   // important: clean up memory
   printf("\n");
