@@ -58,38 +58,46 @@ int main()
   // direction (left,right,top,bottom)
   bool left = false, right = true, up = false, down = false;
   // boundaries
-  int i_limit = matrix[0].size(), j_limit = matrix.size();
-
+  int i_high = matrix[0].size(), j_high = matrix.size(), i_low = 0, j_low = 0;
+  // count of elems left
   int elem = matrix[0].size() * matrix.size();
 
   while (elem > 0)
   {
     // hit right edge
-    if (i == (matrix[0].size() - 1) && right)
+    if (i == (i_high - 1) && right)
     {
       right = false;
       down = true;
+      // top row is traversed
+      j_low++;
     }
 
     // hit bottom edge
-    if (j == (matrix.size() - 1) && down)
+    if (j == (j_high - 1) && down)
     {
       down = false;
       left = true;
+      // right column is traversed
+      i_high--;
     }
 
     // hit right edge
-    if (i == 0 && left)
+    if (i == i_low && left)
     {
       left = false;
       up = true;
+      // bottom row is traversed
+      j_high--;
     }
 
     // hit top edge
-    if (j == 0 && up)
+    if (j == j_low && up)
     {
       down = false;
       left = true;
+      // left column is traversed
+      i_low++;
     }
 
     // update i,j
