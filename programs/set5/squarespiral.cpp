@@ -11,13 +11,30 @@
  */
 int main()
 {
+  // let user choose matrix
+  unsigned short int choice;
+
+  std::cout << "Choose matrix (0 or 1) ? ";
+  std::cin >> choice;
+
   std::cout << "Sample Matrix : " << std::endl;
 
-  // sample matrix
-  std::vector<std::vector<int>> matrix = {{1, 2, 3, 4},
-                                          {5, 6, 7, 8},
-                                          {9, 10, 11, 12},
-                                          {13, 14, 15, 16}};
+  // options
+  std::vector<std::vector<int>> a = {{1, 2, 3, 4},
+                                     {5, 6, 7, 8},
+                                     {9, 10, 11, 12},
+                                     {13, 14, 15, 16}},
+                                b = {{1, 2, 3, 4, 5, 6},
+                                     {7, 8, 9, 10, 11, 12},
+                                     {13, 14, 15, 16, 17, 18}};
+
+  // get matrix
+  std::vector<std::vector<int>> matrix = (choice == 0) ? a
+                                                       : b;
+
+  // clear memory
+  a.clear();
+  b.clear();
 
   // print matrix
   for (auto i : matrix)
@@ -42,8 +59,10 @@ int main()
   // count of elems left
   int elem = matrix[0].size() * matrix.size();
 
+  // iter loop
   while (elem > 0)
   {
+    // add elem
     spiral.push_back(matrix[j][i]);
 
     // hit right edge
@@ -92,9 +111,11 @@ int main()
     if (down)
       j++;
 
+    // traversed 1 item
     elem--;
   }
 
+  // print result
   std::cout << "Spiral = [";
   for (auto i : spiral)
   {
@@ -108,6 +129,13 @@ int main()
 
   matrix.clear();
   spiral.clear();
+  i = 0;
+  j = 0;
+  i_low = 0;
+  i_high = 0;
+  j_low = 0;
+  j_high = 0;
+  elem = 0;
 
   //clear buffer, wait for input to close program
   std::cout << "Enter Anything to Quit :)" << std::endl;
