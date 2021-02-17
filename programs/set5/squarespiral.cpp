@@ -4,7 +4,7 @@
 #include <math.h>
 #include <limits.h>
 
-/**
+/** O(i*j) [i:rows, j:cols]
  * @brief Print 2d matrix in spiral form
  * @author Abhinav Robinson 
  * @return int 
