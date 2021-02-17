@@ -4,14 +4,14 @@
 #include <math.h>
 #include <limits.h>
 
-std::vector<std::vector<int>> generateIdentityMatrix(int size)
+std::vector<std::vector<int>> generateIdentityMatrix(int rows, int cols)
 {
   std::vector<std::vector<int>> matrix;
 
-  for (int i = 0; i <= size; i++)
+  for (int i = 0; i < rows; i++)
   {
     matrix.push_back({});
-    for (int j = 0; j <= size; j++)
+    for (int j = 0; j < cols; j++)
     {
       matrix[i].push_back(1);
     }
@@ -46,11 +46,25 @@ void print2DMatrix(std::vector<std::vector<int>> matrix)
  */
 int main()
 {
-  std::cout << "Enter size of matrix (3+) : ";
-  int choice;
-  std::cin >> choice;
+  std::cout << "Enter rows of matrix (>1) : ";
+  int rows, cols;
+  std::cin >> rows;
+  std::cout << "Enter cols of matrix (>1) : ";
+  std::cin >> cols;
 
-  print2DMatrix(generateIdentityMatrix(choice));
+  std::vector<std::vector<int>> matrix = generateIdentityMatrix(rows, cols);
+
+  for (int i = 0; i < rows; i++)
+  {
+    for (int j = 0; j < cols; j++)
+    {
+      // outer or inner
+      (i == rows - 1 || i == 0 || j == cols - 1 || j == 0) ? matrix[i][j] += i + 1 : matrix[i][j] -= j;
+    }
+  }
+
+  std::cout << "Encrypted" << std::endl;
+  print2DMatrix(matrix);
 
   // important: clean up memory
   printf("\n");
