@@ -6,31 +6,75 @@
 #include <tuple>
 #include <variant>
 
-using variable_type = std::variant<int, char, std::string>;
-
-std::tuple<variable_type, variable_type> itemGetter(int type)
+class overloader
 {
-  // int
-  if (type == 0)
+public:
+  void compare(int type)
   {
-    int a, b;
-    return std::make_tuple(a, b);
+    // int
+    if (type == 0)
+    {
+      int a, b;
+      std::cout << "Enter A:";
+      std::cin >> a;
+      std::cout << "Enter B:";
+      std::cin >> b;
+      std::cout << compare(a, b);
+      return;
+    }
+    // char
+    if (type == 1)
+    {
+      char a, b;
+      std::cout << "Enter A:";
+      std::cin >> a;
+      std::cout << "Enter B:";
+      std::cin >> b;
+      std::cout << compare(a, b);
+      return;
+    }
+    // string
+    if (type == 2)
+    {
+      std::string a, b;
+      std::cout << "Enter A:";
+      std::cin >> a;
+      std::cout << "Enter B:";
+      std::cin >> b;
+      std::cout << compare(a, b);
+      return;
+    }
+    // invalid type
+    throw std::invalid_argument("Invalid type!");
   }
-  // char
-  if (type == 1)
+
+  int compare(int a, int b)
   {
-    char a, b;
-    return std::make_tuple(a, b);
+    if (a > b)
+      return 1;
+    if (b > a)
+      return -1;
+    return 0;
   }
-  // string
-  if (type == 2)
+
+  int compare(char a, char b)
   {
-    std::string a, b;
-    return std::make_tuple(a, b);
+    if (a > b)
+      return 1;
+    if (b > a)
+      return -1;
+    return 0;
   }
-  // invalid type
-  throw std::invalid_argument("Invalid type!");
-}
+
+  int compare(std::string a, std::string b)
+  {
+    if (a > b)
+      return 1;
+    if (b > a)
+      return -1;
+    return 0;
+  }
+};
 
 /**
  * @brief Have a overloaded compare function
@@ -52,15 +96,21 @@ int main()
   std::cout << "Enter type of variable (0,1,2) => (int, chr, str): ";
   std::cin >> type;
 
-  auto [a, b] = itemGetter(type);
+  overloader comparer;
 
-  std::cout << "Enter variable A : ";
-  std::cin >> a;
+  comparer.compare(type);
 
-  std::cout << "Enter variable B : ";
-  std::cin >> b;
+  // important: clean up memory
+  printf("\n");
+  printf("Cleaning up memory...\n");
 
-  // std::cout << &a << &b << std::endl;
+  type = 0;
+
+  //clear buffer, wait for input to close program
+  std::cout << "Enter Anything to Quit :)" << std::endl;
+  std::cin.clear();
+  std::cin.ignore(INT_MAX, '\n');
+  std::cin.get();
 
   return 0;
 }
