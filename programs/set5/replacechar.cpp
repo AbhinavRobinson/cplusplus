@@ -5,7 +5,7 @@
 
 /**
  * @brief Replace char in string
- * 
+ * @author Abhinav Robinson
  * @return int 
  */
 int main()
