@@ -70,6 +70,8 @@ int main()
   printf("\n");
   printf("Cleaning up memory...\n");
 
+  matrix.clear();
+
   //clear buffer, wait for input to close program
   std::cout << "Enter Anything to Quit :)" << std::endl;
   std::cin.clear();
