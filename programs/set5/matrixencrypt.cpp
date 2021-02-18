@@ -4,6 +4,13 @@
 #include <math.h>
 #include <limits.h>
 
+/**
+ * @brief Generates Identity Matrix on nxm size
+ * 
+ * @param rows 
+ * @param cols 
+ * @return std::vector<std::vector<int>> 
+ */
 std::vector<std::vector<int>> generateIdentityMatrix(int rows, int cols)
 {
   std::vector<std::vector<int>> matrix;
@@ -20,6 +27,11 @@ std::vector<std::vector<int>> generateIdentityMatrix(int rows, int cols)
   return matrix;
 }
 
+/**
+ * @brief Prints matrix
+ * 
+ * @param matrix 
+ */
 void print2DMatrix(std::vector<std::vector<int>> matrix)
 {
   for (std::vector<std::vector<int>>::const_iterator i = matrix.begin(); i != matrix.end(); ++i)
@@ -52,6 +64,7 @@ int main()
   std::cout << "Enter cols of matrix (>1) : ";
   std::cin >> cols;
 
+  // generate matrix
   std::vector<std::vector<int>> matrix = generateIdentityMatrix(rows, cols);
 
   for (int i = 0; i < rows; i++)
@@ -63,6 +76,7 @@ int main()
     }
   }
 
+  // encrypt matrix
   std::cout << "Encrypted" << std::endl;
   print2DMatrix(matrix);
 
