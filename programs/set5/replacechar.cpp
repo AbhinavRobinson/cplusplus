@@ -1,9 +1,13 @@
 #include <iostream>
 #include <limits.h>
 #include <math.h>
-#include <stdexcept>
 #include <vector>
 
+/**
+ * @brief Replace char in string
+ * 
+ * @return int 
+ */
 int main()
 {
   // get input
