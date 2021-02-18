@@ -3,22 +3,30 @@
 #include <math.h>
 #include <limits.h>
 #include <stdexcept>
-#include <tuple>
-#include <variant>
 
+/**
+ * @brief Overloaded Comparision Class
+ */
 class overloader
 {
 public:
+  /**
+   * @brief Get input
+   * 
+   * @param type 
+   */
   void compare(int type)
   {
     // int
     if (type == 0)
     {
       int a, b;
+      // get input
       std::cout << "Enter A:";
       std::cin >> a;
       std::cout << "Enter B:";
       std::cin >> b;
+      // compare
       std::cout << compare(a, b);
       return;
     }
@@ -26,10 +34,12 @@ public:
     if (type == 1)
     {
       char a, b;
+      // get input
       std::cout << "Enter A:";
       std::cin >> a;
       std::cout << "Enter B:";
       std::cin >> b;
+      // compare
       std::cout << compare(a, b);
       return;
     }
@@ -37,17 +47,26 @@ public:
     if (type == 2)
     {
       std::string a, b;
+      // get input
       std::cout << "Enter A:";
       std::cin >> a;
       std::cout << "Enter B:";
       std::cin >> b;
+      // compare
       std::cout << compare(a, b);
       return;
     }
     // invalid type
     throw std::invalid_argument("Invalid type!");
   }
-
+  /**
+   * @overload compare
+   * @brief Compare Integers
+   * 
+   * @param a 
+   * @param b 
+   * @return int 
+   */
   int compare(int a, int b)
   {
     if (a > b)
@@ -57,6 +76,14 @@ public:
     return 0;
   }
 
+  /**
+   * @overload compare
+   * @brief Compare Chars
+   * 
+   * @param a 
+   * @param b 
+   * @return int 
+   */
   int compare(char a, char b)
   {
     if (a > b)
@@ -66,6 +93,14 @@ public:
     return 0;
   }
 
+  /**
+   * @overload compare
+   * @brief Compare Strings
+   * 
+   * @param a 
+   * @param b 
+   * @return int 
+   */
   int compare(std::string a, std::string b)
   {
     if (a > b)
@@ -93,11 +128,14 @@ int main()
 {
   int type;
 
+  // get type
   std::cout << "Enter type of variable (0,1,2) => (int, chr, str): ";
   std::cin >> type;
 
+  // declare object
   overloader comparer;
 
+  // compare
   comparer.compare(type);
 
   // important: clean up memory
