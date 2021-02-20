@@ -4,12 +4,44 @@
 #include <random>
 #include <vector>
 
-std::vector<int> quicksort(std::vector<int> list)
+void swap(int *low, int *high)
+{
+  int temp = *low;
+  *low = *high;
+  *high = temp;
+}
+
+int makePartition(std::vector<int> list, int low, int high)
+{
+  int pivot = list[high];
+  int i = low - 1;
+
+  for (int j = 0; i <= high - 1; j++)
+  {
+    if (list[j] <= pivot)
+    {
+      i++;
+      swap(&list[i], &list[j]);
+    }
+  }
+
+  swap(&list[i + 1], &list[high]);
+  return i + 1;
+}
+
+std::vector<int> quicksort(std::vector<int> list, int low, int high)
 {
   // quick sort
   // lets use pivot as medium of 3s (left, center, right)
+  if (low < high)
+  {
+    // make partition
+    int pivot = makePartition(list, low, high);
 
-  return list;
+    // goes deeper into recursion
+    quicksort(list, low, pivot);
+    quicksort(list, pivot + 1, high);
+  }
 }
 
 /**
