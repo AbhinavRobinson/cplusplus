@@ -4,6 +4,14 @@
 #include <random>
 #include <vector>
 
+std::vector<int> quicksort(std::vector<int> list)
+{
+  // quick sort
+  // lets use pivot as medium of 3s (left, center, right)
+
+  return list;
+}
+
 /**
  * @brief Sort a list of random intgers in ascending order.
  * 
