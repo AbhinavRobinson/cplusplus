@@ -6,66 +6,65 @@
 
 void swap(int *low, int *high)
 {
-  int temp = *low;
+  int t = *low;
   *low = *high;
-  *high = temp;
+  *high = t;
 }
 
-int makePartition(std::vector<int> list, int low, int high)
+int partition(int array[], int low, int high)
 {
-  int pivot = list[high];
-  int i = low - 1;
+  int pivot = array[high];
+  int i = (low - 1);
 
-  for (int j = 0; i <= high - 1; j++)
+  for (int j = low; j <= high - 1; j++)
   {
-    if (list[j] <= pivot)
+    if (array[j] <= pivot)
     {
       i++;
-      swap(&list[i], &list[j]);
+      swap(&array[i], &array[j]);
     }
   }
-
-  swap(&list[i + 1], &list[high]);
-  return i + 1;
+  swap(&array[i + 1], &array[high]);
+  return (i + 1);
 }
 
-std::vector<int> quicksort(std::vector<int> list, int low, int high)
+void quickSort(int array[], int low, int high)
 {
-  // quick sort
-  // lets use pivot as medium of 3s (left, center, right)
   if (low < high)
   {
-    // make partition
-    int pivot = makePartition(list, low, high);
-
-    // goes deeper into recursion
-    quicksort(list, low, pivot);
-    quicksort(list, pivot + 1, high);
+    int pivot = partition(array, low, high);
+    quickSort(array, low, pivot - 1);
+    quickSort(array, pivot + 1, high);
   }
 }
 
-/**
- * @brief Sort a list of random intgers in ascending order.
- * 
- * @return int 
- */
+void printArray(int array[], int size)
+{
+  int i;
+  for (i = 0; i < size; i++)
+    printf("%d ", array[i]);
+  printf("\n");
+}
+
 int main()
 {
-  std::random_device rd;
-  std::mt19937 rng(rd());
-  std::uniform_int_distribution<int> unif(1, 100);
+  // make rand array
+  int rand_array[100];
+  for (int i = 0; i < 100; i++)
+    rand_array[i] = rand() % 100;
 
-  std::vector<int> rand_list;
+  // find size
+  int size = sizeof(rand_array) / sizeof(rand_array[0]);
 
-  for (int i = 0; i < 10; i++)
-  {
-    rand_list.push_back(unif(rng));
-  }
+  // print original
+  printf("Original Array: \n");
+  printArray(rand_array, size);
+  std::cout << std::endl;
 
-  std::cout << "Generated list : [";
-  for (auto i : rand_list)
-    std::cout << i << " ";
-  std::cout << "]\n";
+  quickSort(rand_array, 0, size - 1);
+
+  printf("Sorted array: \n");
+  printArray(rand_array, size);
 
   return 0;
 }
