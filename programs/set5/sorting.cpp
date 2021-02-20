@@ -4,6 +4,7 @@
 #include <random>
 #include <vector>
 
+// swap
 void swap(int *low, int *high)
 {
   int t = *low;
@@ -11,6 +12,7 @@ void swap(int *low, int *high)
   *high = t;
 }
 
+// partition
 int partition(int array[], int low, int high)
 {
   int pivot = array[high];
@@ -28,6 +30,7 @@ int partition(int array[], int low, int high)
   return (i + 1);
 }
 
+// main quicksort algo
 void quickSort(int array[], int low, int high)
 {
   if (low < high)
@@ -38,6 +41,7 @@ void quickSort(int array[], int low, int high)
   }
 }
 
+// print function
 void printArray(int array[], int size)
 {
   int i;
@@ -61,8 +65,10 @@ int main()
   printArray(rand_array, size);
   std::cout << std::endl;
 
+  // sort
   quickSort(rand_array, 0, size - 1);
 
+  // print sorted
   printf("Sorted array: \n");
   printArray(rand_array, size);
 
