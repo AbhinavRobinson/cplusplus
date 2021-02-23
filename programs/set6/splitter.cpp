@@ -14,16 +14,14 @@ void printArray(std::vector<std::string> &stringArray, int low, int high, std::s
 {
   if (s == "Root")
   {
-    std::cout << "Root : ";
+    std::cout << "Root : " << stringArray[low] << std::endl;
+    return;
   }
-  else
-  {
-    std::cout << "Splitting " << s << " ";
-  }
+  std::cout << "Splitting " << s << " ";
   std::cout << "[";
   for (int i = low; i <= high; i++)
   {
-    std::cout << stringArray[i] << ", ";
+    std::cout << stringArray[i] << ",";
   }
   std::cout << "]";
   std::cout << std::endl;
@@ -39,22 +37,19 @@ void printArray(std::vector<std::string> &stringArray, int low, int high, std::s
  */
 void splitter(std::vector<std::string> &stringArray, int low, int high)
 {
-  // as long as low < high
-  if (low < high)
+  if (low >= high)
   {
-    // find middle
-    int middle = low + (high - low) / 2;
-    // split
-    printArray(stringArray, low, middle, "Left");
-    splitter(stringArray, low, middle);
-    printArray(stringArray, middle, high, "Right");
-    splitter(stringArray, middle + 1, high);
-  }
-  else
-  {
-    // print root
     printArray(stringArray, low, high, "Root");
+    return;
   }
+  // find middle
+  int middle = low + (high - low) / 2;
+  // split
+  printArray(stringArray, low, middle, "Left");
+  splitter(stringArray, low, middle);
+  printArray(stringArray, middle, high, "Right");
+  splitter(stringArray, middle + 1, high);
+  return;
 }
 
 /**
@@ -81,11 +76,18 @@ int main()
     stringArray.push_back(temp);
   }
 
+  std::cout << "Splitting : [";
+  for (auto i : stringArray)
+    std::cout << i << ",";
+  std::cout << "]\n";
+
   splitter(stringArray, 0, stringArray.size() - 1);
 
   // important: clean up memory
   printf("\n");
   printf("Cleaning up memory...\n");
+
+  stringArray.clear();
 
   //clear buffer, wait for input to close program
   std::cout << "Enter Anything to Quit :)" << std::endl;
