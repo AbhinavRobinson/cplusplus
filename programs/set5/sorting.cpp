@@ -17,7 +17,6 @@ int partition(int array[], int low, int high)
 {
   int pivot = array[high];
   int i = (low - 1);
-
   for (int j = low; j <= high - 1; j++)
   {
     if (array[j] <= pivot)
@@ -71,6 +70,18 @@ int main()
   // print sorted
   printf("Sorted array: \n");
   printArray(rand_array, size);
+
+  // important: clean up memory
+  printf("\n");
+  printf("Cleaning up memory...\n");
+
+  delete[] rand_array;
+
+  //clear buffer, wait for input to close program
+  std::cout << "Enter Anything to Quit :)" << std::endl;
+  std::cin.clear();
+  std::cin.ignore(INT_MAX, '\n');
+  std::cin.get();
 
   return 0;
 }
