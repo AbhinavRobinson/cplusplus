@@ -3,16 +3,58 @@
 #include <math.h>
 #include <vector>
 
-void splitter(std::vector<std::vector<std::string>> &stringArray)
+/**
+ * @brief Print Array
+ * 
+ * @param stringArray 
+ * @param low 
+ * @param high 
+ */
+void printArray(std::vector<std::string> &stringArray, int low, int high, std::string s)
 {
-  bool INCOMPLETE = false;
-  for (auto i : stringArray)
+  if (s == "Root")
   {
-    if (i.size() > 1) !INCOMPLETE;
-    if (INCOMPLETE) break;
+    std::cout << "Root : ";
   }
-
+  else
+  {
+    std::cout << "Splitting " << s << " ";
+  }
+  std::cout << "[";
+  for (int i = low; i <= high; i++)
+  {
+    std::cout << stringArray[i] << ", ";
+  }
+  std::cout << "]";
+  std::cout << std::endl;
   return;
+}
+
+/**
+ * @brief Split array into single items
+ * 
+ * @param stringArray 
+ * @param low 
+ * @param high 
+ */
+void splitter(std::vector<std::string> &stringArray, int low, int high)
+{
+  // as long as low < high
+  if (low < high)
+  {
+    // find middle
+    int middle = low + (high - low) / 2;
+    // split
+    printArray(stringArray, low, middle, "Left");
+    splitter(stringArray, low, middle);
+    printArray(stringArray, middle, high, "Right");
+    splitter(stringArray, middle + 1, high);
+  }
+  else
+  {
+    // print root
+    printArray(stringArray, low, high, "Root");
+  }
 }
 
 /**
@@ -23,7 +65,7 @@ void splitter(std::vector<std::vector<std::string>> &stringArray)
 int main()
 {
   // init stringArray with [0] as {}
-  std::vector<std::vector<std::string>> stringArray = {{}};
+  std::vector<std::string> stringArray;
   // prompt user
   std::cout << "Enter Strings (enter End or end to stop):" << std::endl;
 
@@ -36,8 +78,10 @@ int main()
     // guard for end
     if (temp == "End" || temp == "end") break;
     // push to array
-    stringArray[0].push_back(temp);
+    stringArray.push_back(temp);
   }
+
+  splitter(stringArray, 0, stringArray.size() - 1);
 
   // important: clean up memory
   printf("\n");
