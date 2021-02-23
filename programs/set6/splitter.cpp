@@ -3,6 +3,18 @@
 #include <math.h>
 #include <vector>
 
+void splitter(std::vector<std::vector<std::string>> &stringArray)
+{
+  bool INCOMPLETE = false;
+  for (auto i : stringArray)
+  {
+    if (i.size() > 1) !INCOMPLETE;
+    if (INCOMPLETE) break;
+  }
+
+  return;
+}
+
 /**
  * @brief Break down a list to it's smallest components.
  * 
@@ -10,18 +22,21 @@
  */
 int main()
 {
-  std::vector<std::vector<std::string>> stringList = {{}};
-
+  // init stringArray with [0] as {}
+  std::vector<std::vector<std::string>> stringArray = {{}};
+  // prompt user
   std::cout << "Enter Strings (enter End or end to stop):" << std::endl;
 
+  // loop for input
   while (true)
   {
+    // get input into temp string
     std::string temp;
     std::cin >> temp;
-
+    // guard for end
     if (temp == "End" || temp == "end") break;
-
-    stringList[0].push_back(temp);
+    // push to array
+    stringArray[0].push_back(temp);
   }
 
   // important: clean up memory
