@@ -10,6 +10,7 @@
  */
 int main()
 {
+  // get size of array
   int size;
 
   std::cout << "Enter size of array : ";
@@ -17,6 +18,7 @@ int main()
 
   std::vector<int> unsortedArray;
 
+  // get array
   for (int i = 0; i < size; i++)
   {
     int temp;
