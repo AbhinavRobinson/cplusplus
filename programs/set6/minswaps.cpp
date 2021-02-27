@@ -27,6 +27,7 @@ int main()
     unsortedArray.push_back(temp);
   }
 
+  // create a pair of number and it's index
   std::pair<int, int> arrayPositionPair[size];
   for (int i = 0; i < size; i++)
   {
@@ -34,17 +35,22 @@ int main()
     arrayPositionPair[i].second = i;
   }
 
+  // sort array to get final positions of pairs
   std::sort(arrayPositionPair, arrayPositionPair + size);
 
+  // check if visited
   std::vector<bool> visited(size, false);
 
+  // count swaps
   int swaps = 0;
 
   for (int i = 0; i < size; i++)
   {
+    // if visited or in right position ,skip
     if (visited[i] || arrayPositionPair[i].second == i)
       continue;
 
+    // swaps
     int cycle_size = 0;
     int j = i;
     while (!visited[j])
@@ -59,6 +65,7 @@ int main()
     }
   }
 
+  // print swaps
   std::cout << "Swaps Required : ";
   std::cout << swaps << std::endl;
 
