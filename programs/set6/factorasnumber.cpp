@@ -1,5 +1,6 @@
 #include <cmath>
 #include <iostream>
+#include <limits.h>
 #include <vector>
 
 /**
@@ -16,6 +17,10 @@ bool isThisPrime(int NUM)
       return false;
 
   std::cout << "Not Possible" << std::endl;
+
+  // cleanup
+  NUM = 0;
+
   return true;
 }
 
@@ -43,8 +48,11 @@ std::vector<int> getFactorArray(int NUM)
   }
 
   // if we hit a prime, we wont be able to divide it,
-  // so we add it directly
+  // so we add it directly in front of array
   if (NUM != 1) factorArray.insert(factorArray.begin(), NUM);
+
+  // cleanup
+  NUM = 0;
 
   return factorArray;
 }
@@ -82,6 +90,21 @@ int main()
   // print
   std::cout << "Lowest Factor Number is " << result << std::endl;
 
-  // end program
+  // important: clean up memory
+  printf("\n");
+  printf("Cleaning up memory...\n");
+
+  result = 0;
+  pos = 0;
+  factorArray.clear();
+  NUMBER = 0;
+
+  //clear buffer, wait for input to close program
+  std::cout << "Enter Anything to Quit :)" << std::endl;
+  std::cin.clear();
+  std::cin.ignore(INT_MAX, '\n');
+  std::cin.get();
+
+  // End of main function
   return 0;
 }
