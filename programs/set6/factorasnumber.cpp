@@ -16,7 +16,7 @@ bool isThisPrime(int NUM)
     if (NUM % i == 0)
       return false;
 
-  std::cout << "Not Possible" << std::endl;
+  std::cout << "Not Possible as Number is prime." << std::endl;
 
   // cleanup
   NUM = 0;
