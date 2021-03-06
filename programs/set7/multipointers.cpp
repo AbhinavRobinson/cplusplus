@@ -4,31 +4,45 @@
 
 int main()
 {
-  // ---------------------------------------------
+  // ----------------------------------------------------------------------
   // get arrays
   int input;
-  std::vector<int> *wArr;
+
   std::cout << "Enter W Array (enter -1 to end) : ";
+  std::vector<int> *w_arr;
   while ((std::cin >> input) && input != -1)
-    wArr->push_back(input);
+    w_arr->push_back(input);
   // sanity check
-  if (wArr->size() < 1) throw std::invalid_argument("No items in W array");
-  std::vector<int> *mArr;
+  if (w_arr->size() < 1) throw std::invalid_argument("No items in W array");
+
   std::cout << "Enter M Array (enter -1 to end) : ";
+  std::vector<int> *m_arr;
   while ((std::cin >> input) && input != -1)
-    mArr->push_back(input);
+    m_arr->push_back(input);
   // sanity check
-  if (mArr->size() < 1) throw std::invalid_argument("No items in M array");
-  std::vector<int> *sArr;
+  if (m_arr->size() < 1) throw std::invalid_argument("No items in M array");
+
+  // every m must have a associated w
+  if (m_arr->size() != w_arr->size()) throw std::invalid_argument("M and W arrays of unequal lengths");
+
   std::cout << "Enter S Array (enter -1 to end) : ";
+  std::vector<int> *s_arr;
   while ((std::cin >> input) && input != -1)
-    sArr->push_back(input);
+    s_arr->push_back(input);
   // sanity check
-  if (sArr->size() < 1) throw std::invalid_argument("No items in S array");
+  if (s_arr->size() < 1) throw std::invalid_argument("No items in S array");
   // done taking arrays
-  // ---------------------------------------------
+  // ----------------------------------------------------------------------
   // get score (main logic)
   int score = 0;
-  if (mArr->size() != wArr->size()) throw std::invalid_argument("M and W arrays of unequal lengths");
+  int curr_m = -1, curr_w = -1, curr_s = -1, last_w = -1;
+  for (int s_iter = 0; s_iter < s_arr->size(); s_iter++)
+  {
+    curr_s = s_arr->at(s_iter);
+    for (int wam_iter = 0; wam_iter < m_arr->size(); wam_iter++)
+    {
+      curr_w = w_arr->at(wam_iter);
+    }
+  }
   return 0;
 }
