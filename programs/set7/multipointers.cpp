@@ -41,20 +41,31 @@ int main()
   // get score (main logic)
 
   int score = 0;
+  // init curr state variables
   int curr_m = -1, curr_w = -1, curr_s = -1, max_possible_m = -1;
+  // loop through s array
   for (int s_iter = 0; s_iter < s_arr->size(); s_iter++)
   {
+    // assign current s array value
     curr_s = s_arr->at(s_iter);
+    // loop though w and m (wam) arraies
     for (int wam_iter = 0; wam_iter < m_arr->size(); wam_iter++)
     {
+      // assign current w array value
       curr_w = w_arr->at(wam_iter);
+      // if current w possiable under s, save current as max
       if (curr_w <= curr_s) max_possible_m = m_arr->at(wam_iter);
+      // if current is more than s, end loop
       if (curr_w > curr_s) break;
     }
+    // if any possiable, add to score
     if (max_possible_m != -1) score += max_possible_m;
   }
 
   // print score
   std::cout << "Max Score is " << score << std::endl;
+
+  // end of function
+  // ----------------------------------------------------------------------
   return 0;
 }
