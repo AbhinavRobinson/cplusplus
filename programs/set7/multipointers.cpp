@@ -4,8 +4,7 @@
 
 int main()
 {
-  // ----------------------------------------------------------------------
-  // get arrays
+  // --------------------------------get arrays------------------------------------
 
   int input;
 
@@ -36,9 +35,7 @@ int main()
   // sanity check
   if (s_arr->size() < 1) throw std::invalid_argument("No items in S array");
 
-  // done taking arrays
-  // ----------------------------------------------------------------------
-  // get score (main logic)
+  // -------------------------get score (main logic)------------------------------
 
   int score = 0;
   // init curr state variables
@@ -65,7 +62,23 @@ int main()
   // print score
   std::cout << "Max Score is " << score << std::endl;
 
-  // end of function
-  // ----------------------------------------------------------------------
+  // -----------------------------end of function-------------------------------
+
+  // memory cleanup
+
+  input = 0;
+  w_arr->clear();
+  delete w_arr;
+  m_arr->clear();
+  delete m_arr;
+  s_arr->clear();
+  delete s_arr;
+  score = 0;
+  curr_m = 0;
+  curr_w = 0;
+  curr_s = 0;
+  max_possible_m = 0;
+
+  // return OK
   return 0;
 }
