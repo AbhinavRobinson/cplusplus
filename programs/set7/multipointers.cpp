@@ -2,6 +2,13 @@
 #include <stdexcept>
 #include <vector>
 
+/**
+ * @brief Given weight, value (m) and capacity (s), find max score.
+ *
+ *  score = sum of all m where it's w is <= s
+ *
+ * @return int
+ */
 int main()
 {
   // --------------------------------get arrays------------------------------------

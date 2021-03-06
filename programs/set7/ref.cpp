@@ -2,12 +2,14 @@
 #include <iostream>
 #include <vector>
 
+// solution class
 class ProblemSolution
 {
   public:
   double *solution(int *A, int *B);
 };
 
+// define operation
 double *ProblemSolution::solution(int *A, int *B)
 {
   double *result = nullptr;
@@ -15,6 +17,11 @@ double *ProblemSolution::solution(int *A, int *B)
   return result;
 }
 
+/**
+ * @brief Play around with pointers and refs
+ *
+ * @return int
+ */
 int main()
 {
   int A, B;
