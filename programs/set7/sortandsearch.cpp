@@ -15,6 +15,7 @@ void read_array(std::vector<int> *arrayptr)
   while (std::cin >> input && input != -1)
     arrayptr->push_back(input);
   if (arrayptr->size() <= 1) throw std::invalid_argument("user provided empty array!");
+  input = 0;
   return;
 }
 
@@ -44,6 +45,7 @@ void __swap(int *a, int *b)
   int _temp = *a;
   *a = *b;
   *b = _temp;
+  _temp = 0;
 }
 
 /**
@@ -67,6 +69,7 @@ int __make_partition(std::vector<int> *arrayptr, int low, int high)
     }
   }
   __swap(&arrayptr->at(_iter + 1), &arrayptr->at(high));
+  _pivot = 0;
   return (_iter + 1);
 }
 
@@ -84,7 +87,10 @@ void __qsort_array(std::vector<int> *arrayptr, int low, int high)
     int _partition = __make_partition(arrayptr, low, high);
     __qsort_array(arrayptr, low, _partition - 1);
     __qsort_array(arrayptr, _partition + 1, high);
+    _partition = 0;
   }
+  low = 0;
+  high = 0;
   return;
 }
 
@@ -126,15 +132,17 @@ int __binary_search(std::vector<int> *arrayptr, int low, int high, int number)
 
 /**
  * @brief Search of x in array
- * 
- * @param arrayptr 
- * @param x 
+ *
+ * @param arrayptr
+ * @param x
  */
 void search_for_x(std::vector<int> *arrayptr, int x)
 {
   int index = __binary_search(arrayptr, 0, arrayptr->size() - 1, x);
   if (index == -1) throw std::invalid_argument("Number not found!");
   std::cout << "Number found @ " << index + 1 << std::endl;
+  // clean memory
+  index = 0;
   return;
 }
 
@@ -159,6 +167,10 @@ int main()
   std::cin >> findme;
   search_for_x(&array, findme);
 
-  // end of function
+  // ---------- end of function -----------
+  // clean memory
+  findme = 0;
+  array.clear();
+  // return OK
   return 0;
 }
