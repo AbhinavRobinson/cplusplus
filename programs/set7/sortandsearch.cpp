@@ -4,6 +4,11 @@
 
 // ---------- IO OPERATIONS ------------
 
+/**
+ * @brief Take an array of inputs and push to pointer
+ *
+ * @param arrayptr
+ */
 void read_array(std::vector<int> *arrayptr)
 {
   int input;
@@ -13,6 +18,11 @@ void read_array(std::vector<int> *arrayptr)
   return;
 }
 
+/**
+ * @brief Take a array pointer and print values
+ *
+ * @param arrayptr
+ */
 void print_array(std::vector<int> *arrayptr)
 {
   for (auto i : *arrayptr)
@@ -23,14 +33,28 @@ void print_array(std::vector<int> *arrayptr)
 
 // ------------- SORT ALGO -------------
 
-void swap(int *a, int *b)
+/**
+ * @brief Swap a and b
+ *
+ * @param a
+ * @param b
+ */
+void __swap(int *a, int *b)
 {
   int _temp = *a;
   *a = *b;
   *b = _temp;
 }
 
-int make_partition(std::vector<int> *arrayptr, int low, int high)
+/**
+ * @brief Return the midpoint of array and Swap internally
+ *
+ * @param arrayptr
+ * @param low
+ * @param high
+ * @return int
+ */
+int __make_partition(std::vector<int> *arrayptr, int low, int high)
 {
   int _pivot = arrayptr->at(high);
   int _iter = (low - 1);
@@ -39,55 +63,87 @@ int make_partition(std::vector<int> *arrayptr, int low, int high)
     if (arrayptr->at(_inner_iter) <= _pivot)
     {
       _iter++;
-      swap(&arrayptr->at(_iter), &arrayptr->at(_inner_iter));
+      __swap(&arrayptr->at(_iter), &arrayptr->at(_inner_iter));
     }
   }
-  swap(&arrayptr->at(_iter + 1), &arrayptr->at(high));
+  __swap(&arrayptr->at(_iter + 1), &arrayptr->at(high));
   return (_iter + 1);
 }
 
-void qsort_array(std::vector<int> *arrayptr, int low, int high)
+/**
+ * @brief Quick Sort array
+ *
+ * @param arrayptr
+ * @param low
+ * @param high
+ */
+void __qsort_array(std::vector<int> *arrayptr, int low, int high)
 {
   if (low < high)
   {
-    int _partition = make_partition(arrayptr, low, high);
-    qsort_array(arrayptr, low, _partition - 1);
-    qsort_array(arrayptr, _partition + 1, high);
+    int _partition = __make_partition(arrayptr, low, high);
+    __qsort_array(arrayptr, low, _partition - 1);
+    __qsort_array(arrayptr, _partition + 1, high);
   }
   return;
 }
 
+/**
+ * @brief Sort array using quick sort
+ *
+ * @param arrayptr
+ */
 void sort_array(std::vector<int> *arrayptr)
 {
   std::cout << "Sorting array ..." << std::endl;
-  qsort_array(arrayptr, 0, (arrayptr->size() - 1));
+  __qsort_array(arrayptr, 0, (arrayptr->size() - 1));
   std::cout << "Sorted array 😎" << std::endl;
   return;
 }
 
 // ---------- SEARCH ALGO ------------
 
-int binary_search(std::vector<int> *arrayptr, int low, int high, int number)
+/**
+ * @brief Binary search in array
+ *
+ * @param arrayptr
+ * @param low
+ * @param high
+ * @param number
+ * @return int
+ */
+int __binary_search(std::vector<int> *arrayptr, int low, int high, int number)
 {
   if (low <= high)
   {
     int _mid = (low + high) / 2, _current = arrayptr->at(_mid);
     if (_current == number) return _mid;
-    if (_current > number) return binary_search(arrayptr, low, _mid - 1, number);
-    if (_current < number) return binary_search(arrayptr, _mid + 1, high, number);
+    if (_current > number) return __binary_search(arrayptr, low, _mid - 1, number);
+    if (_current < number) return __binary_search(arrayptr, _mid + 1, high, number);
   }
   return -1;
 }
 
+/**
+ * @brief Search of x in array
+ * 
+ * @param arrayptr 
+ * @param x 
+ */
 void search_for_x(std::vector<int> *arrayptr, int x)
 {
-  int index = binary_search(arrayptr, 0, arrayptr->size() - 1, x);
+  int index = __binary_search(arrayptr, 0, arrayptr->size() - 1, x);
   if (index == -1) throw std::invalid_argument("Number not found!");
   std::cout << "Number found @ " << index + 1 << std::endl;
   return;
 }
 
 // --------------- MAIN ----------------
+/**
+ * @brief Sort the array and find elem using binary search
+ *
+ * @return int
+ */
 int main()
 {
   // Get array
