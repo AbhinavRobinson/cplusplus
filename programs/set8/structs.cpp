@@ -55,8 +55,10 @@ void print_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
     int data_size = rainfall_data_array->size();
     std::cout << data_size << " records found!" << std::endl;
     if (data_size == 0) return;
-    int start_year = 9999, end_year = 0;
-    for (std::vector<struct Rainfall_Data>::const_iterator data_iter = rainfall_data_array->begin(); data_iter != rainfall_data_array->end(); ++data_iter)
+    int start_year = 9999, end_year = -9999;
+    for (std::vector<struct Rainfall_Data>::const_iterator data_iter = rainfall_data_array->begin();
+         data_iter != rainfall_data_array->end();
+         ++data_iter)
     {
       if (start_year >= data_iter->date.year) start_year = data_iter->date.year;
       if (end_year <= data_iter->date.year) end_year = data_iter->date.year;
@@ -67,7 +69,9 @@ void print_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
       {
         int records = 0;
         int total_rainfall = 0;
-        for (std::vector<struct Rainfall_Data>::const_iterator data_iter = rainfall_data_array->begin(); data_iter != rainfall_data_array->end(); ++data_iter)
+        for (std::vector<struct Rainfall_Data>::const_iterator data_iter = rainfall_data_array->begin();
+             data_iter != rainfall_data_array->end();
+             ++data_iter)
         {
           if (data_iter->date.month == curr_month && data_iter->date.year == curr_year)
           {
