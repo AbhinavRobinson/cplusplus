@@ -10,7 +10,7 @@ struct Date
 
 struct Rainfall_Data
 {
-  struct Date Date;
+  struct Date date;
   int rainfall;
 };
 
@@ -38,9 +38,9 @@ void get_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
   }
 
   rainfall_data_collector.rainfall = rainfall_amount;
-  rainfall_data_collector.Date.day = day;
-  rainfall_data_collector.Date.month = month;
-  rainfall_data_collector.Date.year = year;
+  rainfall_data_collector.date.day = day;
+  rainfall_data_collector.date.month = month;
+  rainfall_data_collector.date.year = year;
 
   std::cout << "Success : Information added to object!" << std::endl;
 
@@ -50,6 +50,49 @@ void get_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
 
 void print_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
 {
+  try
+  {
+    int data_size = rainfall_data_array->size();
+    std::cout << data_size << " records found!" << std::endl;
+    if (data_size == 0) return;
+    int start_year = 9999, end_year = 0;
+    for (std::vector<struct Rainfall_Data>::const_iterator data_iter = rainfall_data_array->begin(); data_iter != rainfall_data_array->end(); ++data_iter)
+    {
+      if (start_year >= data_iter->date.year) start_year = data_iter->date.year;
+      if (end_year <= data_iter->date.year) end_year = data_iter->date.year;
+    }
+    for (int curr_year = start_year; curr_year <= end_year; curr_year++)
+    {
+      for (int curr_month = 1; curr_month <= 12; curr_month++)
+      {
+        int records = 0;
+        int total_rainfall = 0;
+        for (std::vector<struct Rainfall_Data>::const_iterator data_iter = rainfall_data_array->begin(); data_iter != rainfall_data_array->end(); ++data_iter)
+        {
+          if (data_iter->date.month == curr_month && data_iter->date.year == curr_year)
+          {
+            total_rainfall += data_iter->rainfall;
+            records++;
+          }
+        }
+        int avg_rainfall = 0;
+        if (records > 0)
+        {
+          avg_rainfall = (int)total_rainfall / records;
+          std::cout << "Success : Average rainfall in "
+                    << curr_month << " / " << curr_year << " was "
+                    << avg_rainfall << " according to "
+                    << records << " records." << std::endl;
+        }
+      }
+    }
+    std::cout << "Success : End of Records" << std::endl;
+  }
+  catch (const std::exception &err)
+  {
+    std::cout << "Error : Records couldn't be fetched!";
+  }
+
   return;
 }
 
