@@ -3,7 +3,7 @@
 
 /**
  * @brief Date Struct
- * 
+ *
  * @param day
  * @param month
  * @param year
@@ -17,7 +17,7 @@ struct Date
 
 /**
  * @brief Rainfall Data Struct
- * 
+ *
  * @param Date {Struct} day, month, year
  * @param rainfall
  */
@@ -27,12 +27,23 @@ struct Rainfall_Data
   int rainfall;
 };
 
+/**
+ * @brief Get the rainfall data object
+ *
+ * @param rainfall_data_array
+ */
 void get_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
 {
+  // prompt user
   std::cout << "Enter Rainfall Data -" << std::endl;
+
+  // init temp struct
   struct Rainfall_Data rainfall_data_collector;
 
+  // init temp variables
   int day, month, year, rainfall_amount;
+
+  // try to get valid data
   try
   {
     std::cout << "Enter Day of Day?";
@@ -50,25 +61,37 @@ void get_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
     return;
   }
 
+  // append to struct
   rainfall_data_collector.rainfall = rainfall_amount;
   rainfall_data_collector.date.day = day;
   rainfall_data_collector.date.month = month;
   rainfall_data_collector.date.year = year;
 
+  // success
   std::cout << "Success : Information added to object!" << std::endl;
 
+  // push to object
   rainfall_data_array->push_back(rainfall_data_collector);
   return;
 }
 
+/**
+ * @brief Print data from struct
+ * 
+ * @param rainfall_data_array 
+ */
 void print_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
 {
+  // try execution
   try
   {
+    // if empty return
     int data_size = rainfall_data_array->size();
     std::cout << data_size << " records found!" << std::endl;
     if (data_size == 0) return;
 
+    // if not empty
+    // get year range
     int start_year = 9999, end_year = -9999;
     for (std::vector<struct Rainfall_Data>::const_iterator data_iter = rainfall_data_array->begin();
          data_iter != rainfall_data_array->end();
@@ -78,6 +101,7 @@ void print_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
       if (end_year <= data_iter->date.year) end_year = data_iter->date.year;
     }
 
+    // iterate over years, and months
     for (int curr_year = start_year; curr_year <= end_year; curr_year++)
     {
       for (int curr_month = 1; curr_month <= 12; curr_month++)
@@ -85,10 +109,12 @@ void print_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
         int records = 0;
         int total_rainfall = 0;
 
+        // iterate over records
         for (std::vector<struct Rainfall_Data>::const_iterator data_iter = rainfall_data_array->begin();
              data_iter != rainfall_data_array->end();
              ++data_iter)
         {
+          // calc avg
           if (data_iter->date.month == curr_month && data_iter->date.year == curr_year)
           {
             total_rainfall += data_iter->rainfall;
@@ -98,6 +124,7 @@ void print_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
 
         int avg_rainfall = 0;
 
+        // if any records, print avg
         if (records > 0)
         {
           avg_rainfall = (int)total_rainfall / records;
@@ -108,10 +135,13 @@ void print_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
         }
       }
     }
+
+    // success
     std::cout << "Success : End of Records" << std::endl;
   }
   catch (const std::exception &err)
   {
+    // catch error
     std::cout << "Error : Records couldn't be fetched!";
   }
 
