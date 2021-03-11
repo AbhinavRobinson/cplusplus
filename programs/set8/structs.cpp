@@ -77,8 +77,8 @@ void get_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
 
 /**
  * @brief Print data from struct
- * 
- * @param rainfall_data_array 
+ *
+ * @param rainfall_data_array
  */
 void print_rainfall_data(std::vector<struct Rainfall_Data> *rainfall_data_array)
 {
