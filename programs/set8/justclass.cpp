@@ -1,17 +1,32 @@
 #include <iostream>
 #include <stdexcept>
+#include <vector>
+
+struct Emp_Details
+{
+  int id;
+  std::string name;
+  std::string designation;
+  double salary;
+};
 
 class Employee
 {
-  int employee_id;
-  std::string employee_name;
-  std::string employee_designation;
-  double monthly_salary;
+  Emp_Details employee;
 
   public:
   void add_employee_data(int id, std::string name, std::string desig, double sal);
   void print_employee_data();
 };
+
+void Employee::add_employee_data(int id, std::string name, std::string desig, double sal)
+{
+  employee.id = id;
+  employee.name = name;
+  employee.designation = desig;
+  employee.salary = sal;
+  return;
+}
 
 int main()
 {
