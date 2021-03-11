@@ -73,5 +73,13 @@ void Employee::add_employee_data(int id, std::string name, std::string desig, do
 
 int main()
 {
+  int emps;
+  std::cout << "Enter nos of employees to add :";
+  std::cin >> emps;
+  Employee emp_data;
+  emp_data.get_employee_data(emps);
+  std::cout << "Show All Emps with Sal > 20K" << std::endl;
+  emp_data.print_employee_data();
+  // end of program
   return 0;
 }
