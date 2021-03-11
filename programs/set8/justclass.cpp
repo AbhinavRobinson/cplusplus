@@ -2,17 +2,16 @@
 #include <stdexcept>
 #include <vector>
 
-struct Emp_Details
-{
-  int id;
-  std::string name;
-  std::string designation;
-  double salary;
-};
-
 class Employee
 {
-  Emp_Details employee;
+  struct Emp_Details
+  {
+    int id;
+    std::string name;
+    std::string designation;
+    double salary;
+  };
+  std::vector<Emp_Details> employees;
 
   public:
   void add_employee_data(int id, std::string name, std::string desig, double sal);
@@ -21,10 +20,13 @@ class Employee
 
 void Employee::add_employee_data(int id, std::string name, std::string desig, double sal)
 {
+  Emp_Details employee;
   employee.id = id;
   employee.name = name;
   employee.designation = desig;
   employee.salary = sal;
+
+  employees.push_back(employee);
   return;
 }
 
