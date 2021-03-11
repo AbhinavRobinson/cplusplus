@@ -14,12 +14,20 @@ class Employee
   std::vector<Emp_Details> employees;
 
   public:
-  void get_employee_data(int num_of_employees, Employee emps);
+  void get_employee_data(int num_of_employees);
   void add_employee_data(int id, std::string name, std::string desig, double sal);
   void print_employee_data();
 };
 
-void Employee::get_employee_data(int num_of_employees, Employee emps)
+void Employee::print_employee_data()
+{
+  for (Emp_Details emp : employees)
+    if (emp.salary > 20000)
+      std::cout << emp.id << " " << emp.name << " " << emp.designation << " " << emp.salary << std::endl;
+  return;
+}
+
+void Employee::get_employee_data(int num_of_employees)
 {
   try
   {
@@ -38,7 +46,7 @@ void Employee::get_employee_data(int num_of_employees, Employee emps)
       std::cout << "Enter salary:";
       std::cin >> salary;
 
-      emps.add_employee_data(id, name, designation, salary);
+      add_employee_data(id, name, designation, salary);
 
       num_of_employees--;
     }
