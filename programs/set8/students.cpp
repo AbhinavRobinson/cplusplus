@@ -27,6 +27,12 @@ Student::Student(int std_roll_no, std::string std_name)
 
 void ClassRoom::add_student()
 {
+  if (students.size() > 10)
+  {
+    std::cout << "Class Room is full." << std::endl;
+    return;
+  }
+
   int roll_no;
   std::string name;
 
