@@ -14,6 +14,17 @@ void add_customer_data(std::vector<struct noofcustomers> *customer_list)
   std::string *name = NULL;
   name = new std::string;
 
+  std::cout << "Enter Name:";
+  std::cin >> *name;
+  std::cout << "Enter Phone Number:";
+  std::cin >> *p_num;
+
+  noofcustomers *new_cust = NULL;
+  new_cust = new noofcustomers;
+
+  customer_list->push_back(*new_cust);
+
+  delete new_cust;
   delete p_num;
   delete name;
   return;
@@ -38,7 +49,6 @@ int main()
     {
     case 0:
       std::cout << "Exiting ..." << std::endl;
-
       delete input;
       delete customer_list;
       return 0;
