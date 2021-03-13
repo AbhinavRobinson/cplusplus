@@ -7,7 +7,7 @@ struct noofcustomers
   int phone_number;
 };
 
-void add_customer_data(std::vector<struct noofcustomers> customer_list)
+void add_customer_data(std::vector<struct noofcustomers> *customer_list)
 {
   int *p_num = NULL;
   p_num = new int;
@@ -19,15 +19,15 @@ void add_customer_data(std::vector<struct noofcustomers> customer_list)
   return;
 }
 
-void print_customer_data(std::vector<struct noofcustomers> customer_list)
+void print_customer_data(std::vector<struct noofcustomers> *customer_list)
 {
   return;
 }
 
 int main()
 {
-  noofcustomers *customer_list = NULL;
-  customer_list = new noofcustomers;
+  std::vector<noofcustomers> *customer_list = NULL;
+  customer_list = new std::vector<noofcustomers>;
   int *input = NULL;
   input = new int;
 
@@ -36,11 +36,19 @@ int main()
   {
     switch (*input)
     {
+    case 0:
+      std::cout << "Exiting ..." << std::endl;
+
+      delete input;
+      delete customer_list;
+      return 0;
+    case 1:
+      add_customer_data(customer_list);
+      break;
+    case 2:
+      print_customer_data(customer_list);
+      break;
     }
     std::cout << "Customer List\n1 - Enter New Customer\n2 - Print List\n0 - Exit" << std::endl;
   }
-
-  delete input;
-  delete customer_list;
-  return 0;
 }
