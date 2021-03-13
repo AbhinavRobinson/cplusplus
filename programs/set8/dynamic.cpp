@@ -22,6 +22,9 @@ void add_customer_data(std::vector<struct noofcustomers> *customer_list)
   noofcustomers *new_cust = NULL;
   new_cust = new noofcustomers;
 
+  new_cust->name = *name;
+  new_cust->phone_number = *p_num;
+
   customer_list->push_back(*new_cust);
 
   delete new_cust;
@@ -32,6 +35,17 @@ void add_customer_data(std::vector<struct noofcustomers> *customer_list)
 
 void print_customer_data(std::vector<struct noofcustomers> *customer_list)
 {
+  if (customer_list->size() == 0)
+  {
+    std::cout << "No customers added!" << std::endl;
+    return;
+  }
+
+  for (noofcustomers i : *customer_list)
+  {
+    std::cout << "Name: " << i.name << " Number: " << i.phone_number << std::endl;
+  }
+
   return;
 }
 
