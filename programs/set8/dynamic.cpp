@@ -51,14 +51,17 @@ void print_customer_data(std::vector<struct noofcustomers> *customer_list)
 
 int main()
 {
+//   init pointers
   std::vector<noofcustomers> *customer_list = NULL;
   customer_list = new std::vector<noofcustomers>;
   int *input = NULL;
   input = new int;
 
+//     get input
   std::cout << "Customer List\n1 - Enter New Customer\n2 - Print List\n0 - Exit" << std::endl;
   while ((std::cin >> *input) && input != 0)
   {
+//     switch according to input
     switch (*input)
     {
     case 0:
