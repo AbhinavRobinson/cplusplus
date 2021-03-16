@@ -73,9 +73,11 @@ void Employee::add_employee_data(int id, std::string name, std::string desig, do
 
 int main()
 {
+//   get number of employees
   int emps;
   std::cout << "Enter nos of employees to add :";
   std::cin >> emps;
+//   init class
   Employee emp_data;
   emp_data.get_employee_data(emps);
   std::cout << "Show All Emps with Sal > 20K" << std::endl;
